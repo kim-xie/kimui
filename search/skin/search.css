@@ -1,0 +1,29 @@
+@charset "utf-8";
+@import url("font-awesome/css/font-awesome.min.css");
+.cd{color:#ddd;}
+.cb{color:#20a0ff;}
+.c3{color:#333;}
+.c9{color:#999;}
+.cplaceholder{color:#97a8be;}
+.cicon{color: #97a8be;}
+.cinput{color:#1f2d3d;}
+.none{display:none;}
+.block{display:block;}
+#searchBox{position:relative;background:#fff;}
+#searchBox #search_box{display:inline-block;position:relative;width:100%;height:100%;}
+#searchBox #search_box.focus{box-shadow: 0px 0px 4px #20a0ff;}
+#searchBox #search_box.focus .searchIcon{color:#20a0ff;}
+#searchBox #search_box.focus .inputclear{color:#20a0ff;}
+#searchBox #search_box.focus .search_button{background:#20a0ff;color:#fff;}
+#searchBox #search_box span{display:inline-block;height:100%;}
+#searchBox #search_box .search_icon{float:left;/* width:8%; */text-align:center;}
+#searchBox #search_box .search_main{float:left;/* width:80%; */text-align:center;overflow:hidden;}
+#searchBox #search_box .search_main .search_me{float:left;}
+#searchBox #search_box .search_main .search_in{float:left;height:100%;width:94%;border:none;text-indent:0.2em;outline:none;}
+#searchBox #search_box .search_button{position:relative;float:right;/* width:12%; */cursor:pointer;text-align:center;font-weight:600;}
+#searchBox #search_box .search_button .rightArrow{position:absolute;color:#fff;left:-1px;}
+#searchBox #search_box .inputclear{position:absolute;right:13%;z-index:3;cursor:pointer;}
+#searchBox #search_box .inputclear.none{display:none;}
+#searchBox #search_box .inputclear.block{display:block;}
+#searchBox #search_list{width:100%;position:absolute;z-index:100;text-align:left;}
+#searchBox #search_list li a{display:inline-block;width:100%;padding:8px 0;text-indent:0.5em;}

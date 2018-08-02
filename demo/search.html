@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>搜索demo</title>
+  <style type="text/css">
+	*{padding:0;margin:0;}
+	body{family:"微软雅黑";font-size:12px;}
+	a{text-decoration:none;}
+	ul,ol li{list-style:none;} 
+	
+ </style>
+ </head>
+ <body>
+	 <div id="searchBox" style="width:400px;margin:200px auto;"></div>
+	 <!-- 引入工具包 -->
+	 <script type="text/javascript" src="../util/jquery-3.0.0.min.js"></script>	
+	 <script type="text/javascript" src="../search/search.js"></script>	
+	 <script>
+		//搜索框
+		$("#searchBox").kimSearch({
+			searchText: "搜 索",//搜索提示
+			maxlength: "50",//允许输入的最长个数
+			placeholder: "",//提示内容IE8不支持
+			placeholder1: "可直接搜索也可选择条件进行搜索",//提示内容所有浏览器都通用
+			width: "500",//搜索框的宽度
+			height: "32",//搜索框的高度
+			iconWidth: "32",//搜索图标的宽度
+			searchButtonWidth: "60",//搜索按钮的宽度
+			hideArrow: false,//是否显示搜索三角形
+			searchFontSize: 14,//搜索字体
+			searchIcon: "fa-search",//搜索框的搜索图标
+			searchIconFS: 18,//搜索框的搜索图标的大小
+			searchBoxborder: "2px solid #20a0ff",//下拉列表对象的边框
+			searchBoxborderWidth: 2,//下拉列表对象的边框
+			searchFocusCl: "#20a0ff",//搜索框获取焦点的颜色
+			showClear: true, //是否显示重置按钮
+			useCondition: false, //是否使用条件搜索
+			tipColor: "black", //搜索条件文本颜色
+			searchArg: ["按员工编号搜索","按员工姓名搜索"],//下拉列表的搜索条件
+			listContent: ["1111","2222","123"],//下拉列表的数据
+			noDataText: "搜索不到匹配数据",//搜索不到匹配数据的提示信息
+			listFontSize: 14,//列表字体
+			listborder: "2px solid #ccc",//下拉列表对象的边框
+			listBackground: "#FFFFFF",//下拉列表对象的背景颜色
+			listcolor: "#1f2d3d",//下拉列表对象的颜色
+			listhoverbg: "#20a0ff",//下拉列表鼠标移入对象的背景颜色
+			listhovercl: "#fff",//下拉列表鼠标移入对象的颜色
+			allowEnter: true,//允许使用回车键触发搜索
+			onclick: function($obj,medata,indata){//点击搜索事件
+				alert("搜索条件: "+medata + "--搜索值: " +indata)
+			}
+		});
+	 </script>
+ </body>
+</html>

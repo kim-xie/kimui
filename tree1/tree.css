@@ -1,0 +1,80 @@
+@charset "utf-8";
+/*����������*/
+::-webkit-scrollbar{width:8px;height:0px;background:#666;}
+::-webkit-scrollbar-button{background-color:#fff;}
+::-webkit-scrollbar-track{background:#666;}
+::-webkit-scrollbar-track-piece{background:#fff}
+::-webkit-scrollbar-thumb{background:#666;}
+::-webkit-scrollbar-corner{background:#82AFFF;}
+::-webkit-scrollbar-resizer{background:#FF0BEE;}
+scrollbar{-moz-appearance:none !important;background:rgb(0,255,0) !important;}
+scrollbarbutton{-moz-appearance:none !important;background-color:rgb(0,0,255) !important;}
+scrollbarbutton:hover{-moz-appearance:none !important;background-color:rgb(255,0,0) !important;}
+/* �������¼�ͷ */
+scrollbarbutton{display:none !important;}
+/* ������������ */
+scrollbar[orient="vertical"]{min-width:8px !important;}
+
+ul,ol{list-style:none outside none}
+ul li{padding-top:0px}
+a{color:#000;text-decoration:none}
+.cd{color:#ddd;}
+.cb{color:#0076e3;}
+.searchbox .searchwrap{display:inline-block;position:relative;width:100%;height:100%;border:1px solid #0076e3;}
+.searchbox .searchwrap .inputclear{display:none;position:absolute;right:16%;top:8px;z-index:3;cursor:pointer;}
+.searchbox .searchwrap input{width:85%;height:100%;line-height:28px;border:none;outline:none;text-indent:0.5em;}
+.searchbox .searchwrap .searchbutton{width:15%;height: 100%;float:right;line-height:28px;text-align:center;background:#0076e3;color:#fff;cursor:pointer;font-weigth:600;}
+.tree div{display:block;overflow:hidden}
+.tree .toggle{cursor:pointer;}
+.tree div,.tree a,.tree span{display:inherit;height:22px;line-height:22px}
+.tree .first_collapsable{background-position:0 -250px}
+.tree .expandable{background-position:0 -100px}
+.tree div div{background-position:0 -100px;border:medium none;display:block;float:left;height:22px;overflow:hidden;width:22px}
+.tree div div{background:url("tree.png") no-repeat scroll 0 0 transparent}  /* scroll 背景和内容绑定 */
+.tree div{display:block;overflow:hidden}
+.tree div,.tree a,.tree span{display:inherit;height:22px;line-height:22px}
+.tree .line{background-position:0 -400px}
+.tree .node{background-position:0 -450px}
+.tree .file{background-position:0 -100px}
+.tree .folder_collapsable,.tree .folder_expandable,.tree .file{background:url("folder.png") no-repeat scroll 0 0 transparent}
+.tree li{text-align:left;}
+.tree li a,.tree li span{color:#183152}
+.tree a,.tree a:hover{text-decoration:none}
+.tree div,.tree a,.tree span{display:inherit;height:22px;line-height:23px;font-size:12px;}
+.tree .file{background-position:0 -100px}
+.tree .tm-tree-checkbox,.tm-tree-checkbox-focus,.tm-tree-checkbox-checked{background:url("tm-tree.png") no-repeat scroll 0 0 transparent}
+.tree .tm-tree-radio,.tm-tree-radio-focus,.tm-tree-radio-checked{background:url("tm-tree.png") no-repeat scroll 0 0 transparent}
+.tree .tm-tree-checkbox{background-position:0 0px;width:13px;height:13px;margin:5px 3px}
+.tree .tm-tree-checkbox-focus{background-position:-14px -28px;width:13px;height:13px;margin:5px 3px;}
+.tree .tm-tree-checkbox-focus:hover{background-position:-14px -42px;width:13px;height:13px;margin:5px 3px;}
+.tree .tm-tree-checkbox-checked:hover{background-position:-14px -14px;width:13px;height:13px;margin:5px 3px;}
+.tree .tm-tree-checkbox-checked{background-position:-14px 0px;width:13px;height:13px;margin:5px 3px;}
+.tree .tm-tree-radio{background-position:-28px 0px;width:13px;height:13px;margin:5px 3px;}
+.tree .tm-tree-radio:hover{background-position:-28px -14px;width:13px;height:13px;margin:5px 3px;}
+.tree .tm-tree-radio-focus{background-position:-42px -28px;width:13px;height:13px;margin:5px 3px;}
+.tree .tm-tree-radio-focus:hover{background-position:-42px -42px;width:13px;height:13px;margin:5px 3px;}
+.tree .tm-tree-radio-checked{background-position:-42px 0px;width:13px;height:13px;margin:5px 3px;}
+.tree .tm-tree-radio-checked:hover{background-position:-42px -14px;width:13px;height:13px;margin:5px 3px;}
+.tm_85C1E4{background:#85C1E4}
+.tm_red{color:red}
+.tm_ccc{background:#ccc}
+
+#treeWrap{position:relative;width:100%;height:262px;overflow:auto;}
+#treeWrap #searchRoot{left:0;top:0px;z-index:1000;width:100%;height:100%;background:#fff;display:none;/* overflow:hidden */}
+#treeWrap #searchRoot .tm-tree-checkbox,.tm-tree-checkbox-focus,.tm-tree-checkbox-checked{background:url("tm-tree.png") no-repeat scroll 0 0 transparent;cursor:pointer;}
+#treeWrap #searchRoot .tm-tree-checkbox{background-position:0 0px;width:13px;height:13px;margin:5px 3px}
+#treeWrap #searchRoot .tm-tree-checkbox-focus{background-position:-14px -28px;width:13px;height:13px;margin:5px 3px;}
+#treeWrap #searchRoot .tm-tree-checkbox-focus:hover{background-position:-14px -42px;width:13px;height:13px;margin:5px 3px;}
+#treeWrap #searchRoot .tm-tree-checkbox-checked:hover{background-position:-14px -14px;width:13px;height:13px;margin:5px 3px;}
+#treeWrap #searchRoot .tm-tree-checkbox-checked{background-position:-14px 0px;width:13px;height:13px;margin:5px 3px;}
+#treeWrap #searchRoot div{display:block;float:left;height:22px;overflow:hidden;width:22px}
+#treeWrap #searchRoot div,#treeWrap #searchRoot a,#treeWrap #searchRoot span{display:inherit;height:22px;line-height:23px;font-size:12px;}
+/* #treeWrap #searchRoot a{margin-left:7px;} */
+#treeWrap #searchRoot .searchList{margin:5px 9px;}
+#treeWrap #searchRoot .searchList li{width:271px;overflow:hidden;}
+#treeWrap #searchRoot .searchList .folder_checkbox_expandable{width:19px;display:inline-block;float:left;overflow:hidden;}
+#treeWrap #searchRoot .searchList .tm-ui-tree-name{display:inline-block;float:right;width:252px;overflow:hidden;}
+#treeWrap #searchRoot .searchList .tm-ui-tree-name a{display:inline-block;width:100%;overflow:hidden;}
+
+#treeWrap #overlay{display:none;position:absolute;left:0;top:0px;z-index:1995;width:100%;height:100%;background:#fff;opacity:0.4;filter:alpha(opacity=40);}
+#treeWrap #overlay .imgBox{position:absolute;width:100px;height:100px;line-height:100px;text-align:center;}

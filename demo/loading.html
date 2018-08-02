@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>loading  demo</title>
+  <style type="text/css">
+	*{padding:0;margin:0;}
+	body{width:100%;height:100%;}
+ </style>
+ </head>
+ <body>
+	 <div style="text-align:center;">
+		  <h3>loading demo</h3><br/>
+		  <div id="kimLodings" style="width:100%;height:500px;border:1px solid red;text-align:center;"></div>
+	 </div>
+
+	 <!-- 引入工具包 -->
+	 <script type="text/javascript" src="../util/jquery-3.0.0.min.js"></script>	
+	 <script type="text/javascript" src="../loading/loading.js"></script>	
+	 <script>
+		$(function(){
+			//kimloading("数据加载中...");
+			kimloading("数据加载中...",300);
+			//kimloading("数据加载中...",300,true,true,$('#kimLodings'));
+
+			//$.kimloading();
+		})
+		
+	 </script>
+ </body>
+</html>

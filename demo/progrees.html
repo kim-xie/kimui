@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>页面加载进度条</title>
+  <style type="text/css">
+	*{padding:0;margin:0;}
+	body{family:"微软雅黑";font-size:12px;}
+	a{text-decoration:none;}
+	ul,ol li{list-style:none;} 
+	
+ </style>
+ <!-- <link href="../tree/tree.css" rel="stylesheet" type="text/css" /> -->
+ </head>
+ <body>
+	 <div id="progressBox" style="width:400px;height:300px;margin:100px auto;border:1px solid red;"></div>
+	 <!-- 引入工具包 -->
+	 <script type="text/javascript" src="../util/jquery-3.0.0.min.js"></script>	
+	 <script type="text/javascript" src="../progress/progress.js"></script>	
+	 <script>
+		
+		
+		//参数配置
+		KimProgress.configure({
+			minimum: 0.1, //开始时最小百分比
+			easing: 'ease', //动画方式 ease linear
+			positionUsing: '',
+			speed: 200,
+			trickle: true, //是否自动递增
+			trickleSpeed: 200, //自动递增速度
+			showSpinner: true, //是否打开加载器
+			parent: '#progressBox', //指定父容器
+			barSelector: '[role="bar"]',
+			spinnerSelector: '[role="spinner"]',
+			template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+		});
+
+		//默认会添加到body
+		KimProgress.start();
+		
+		//设置进度条的开始位置 0-1
+		KimProgress.set(0);
+		
+		//增长速度
+		KimProgress.inc(0.1);
+
+		window.onload = function(){
+			//加载完毕，关闭进度条  true
+			KimProgress.done();
+		}
+	 </script>
+ </body>
+</html>

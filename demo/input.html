@@ -1,0 +1,344 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>输入框demo</title>
+  <link href="../util/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+.kimui-input {
+    position: relative;
+    font-size: 14px;
+    display: inline-block;
+    width: 100%
+}
+
+.kimui-input.is-disabled .kimui-input__inner {
+    background-color: #eef1f6;
+    border-color: #d1dbe5;
+    color: #bbb;
+    cursor: not-allowed
+}
+
+.kimui-input.is-disabled .kimui-input__inner::-webkit-input-placeholder {
+    color: #bfcbd9
+}
+
+.kimui-input.is-disabled .kimui-input__inner::-moz-placeholder {
+    color: #bfcbd9
+}
+
+.kimui-input.is-disabled .kimui-input__inner:-ms-input-placeholder {
+    color: #bfcbd9
+}
+
+.kimui-input.is-disabled .kimui-input__inner::placeholder {
+    color: #bfcbd9
+}
+
+.kimui-input.is-error .kimui-input__inner,.kimui-input.is-error .kimui-input__icon {
+    color: #e74c3c;
+    border-color: #e74c3c;
+    box-shadow: none;
+}
+
+.kimui-input.is-success .kimui-input__inner,.kimui-input.is-success .kimui-input__icon {
+    color: #2ecc71;
+    border-color: #2ecc71;
+    box-shadow: none;
+}
+
+.kimui-input.is-warn .kimui-input__inner,.kimui-input.is-warn .kimui-input__icon {
+    color: #f7ba2a;
+    border-color: #f7ba2a;
+    box-shadow: none;
+}
+
+.kimui-input.is-active .kimui-input__inner {
+    outline: none;
+    border-color: #20a0ff
+}
+
+.kimui-input__inner {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid #bfcbd9;
+    box-sizing: border-box;
+    color: #1f2d3d;
+    display: inline-block;
+    font-size: inherit;
+    height: 36px;
+    line-height: 1;
+    outline: none;
+    padding: 3px 10px;
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    width: 100%
+}
+
+.kimui-input__inner::-webkit-input-placeholder {
+    color: #97a8be
+}
+
+.kimui-input__inner::-moz-placeholder {
+    color: #97a8be
+}
+
+.kimui-input__inner:-ms-input-placeholder {
+    color: #97a8be
+}
+
+.kimui-input__inner::placeholder {
+    color: #97a8be
+}
+
+.kimui-input__inner:hover {
+    border-color: #8391a5
+}
+
+.kimui-input__inner:focus {
+    outline: none;
+    border-color: #20a0ff
+}
+
+.kimui-input__icon {
+    position: absolute;
+    width: 35px;
+    height: 100%;
+    right: 0;
+    top: 2px;
+	font-size: 20px;
+    text-align: center;
+    color: #bfcbd9;
+    transition: all .3s
+}
+
+.kimui-input__icon:after {
+    content: "";
+    height: 100%;
+    width: 0;
+    display: inline-block;
+    vertical-align: middle
+}
+
+.kimui-input__icon+.kimui-input__inner {
+    padding-right: 35px
+}
+
+.kimui-input__icon.is-clickable:hover {
+    cursor: pointer;
+    color: #8391a5
+}
+
+.kimui-input__icon.is-clickable:hover+.kimui-input__inner {
+    border-color: #8391a5
+}
+
+.kimui-input--large {
+    font-size: 16px
+}
+
+.kimui-input--large .kimui-input__inner {
+    height: 42px
+}
+
+.kimui-input--small {
+    font-size: 13px
+}
+
+.kimui-input--small .kimui-input__inner {
+    height: 30px
+}
+
+.kimui-input--mini {
+    font-size: 12px
+}
+
+.kimui-input--mini .kimui-input__inner {
+    height: 22px
+}
+
+.kimui-input-group {
+    line-height: normal;
+    display: inline-table;
+    width: 100%;
+    border-collapse: separate
+}
+
+.kimui-input-group>.kimui-input__inner {
+    vertical-align: middle;
+    display: table-cell
+}
+
+.kimui-input-group__append,.kimui-input-group__prepend {
+    background-color: #fbfdff;
+    color: #97a8be;
+    vertical-align: middle;
+    display: table-cell;
+    position: relative;
+    border: 1px solid #bfcbd9;
+    border-radius: 4px;
+    padding: 0 10px;
+    width: 1px;
+    white-space: nowrap
+}
+
+.kimui-input-group__append .el-button,.kimui-input-group__append .el-select,.kimui-input-group__prepend .el-button,.kimui-input-group__prepend .el-select {
+    display: block;
+    margin: -10px
+}
+
+.kimui-input-group__append button.el-button,.kimui-input-group__append div.el-select .kimui-input__inner,.kimui-input-group__append div.el-select:hover .kimui-input__inner,.kimui-input-group__prepend button.el-button,.kimui-input-group__prepend div.el-select .kimui-input__inner,.kimui-input-group__prepend div.el-select:hover .kimui-input__inner {
+    border-color: transparent;
+    background-color: transparent;
+    color: inherit;
+    border-top: 0;
+    border-bottom: 0
+}
+
+.kimui-input-group__append .el-button,.kimui-input-group__append .kimui-input,.kimui-input-group__prepend .el-button,.kimui-input-group__prepend .kimui-input {
+    font-size: inherit
+}
+
+.kimui-input-group__prepend {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0
+}
+
+.kimui-input-group__append {
+    border-left: 0
+}
+
+.kimui-input-group--prepend .kimui-input__inner,.kimui-input-group__append {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0
+}
+
+.kimui-input-group--append .kimui-input__inner {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0
+}
+.kimui-input{position:relative;}
+.vilidateTip{position:absolute;left:0;top:36px;margin:0;}
+
+ </style>
+ </head>
+ <body>
+	 <!-- 输入框 -->
+	 <div style="width:80%;margin:60px auto;text-align:center;">
+		  <h3>输入框demo</h3><br/>
+
+		  <div class="kimui-input">
+			<input autocomplete="off" placeholder="请输入内容" type="text" rows="2" validateevent="true" class="kimui-input__inner">
+		  </div>
+
+		  <br/>
+		  <br/>
+
+		  <div class="kimui-input is-disabled">
+			<input autocomplete="off" placeholder="禁止输入输入框" disabled="disabled" type="text" rows="2" validateevent="true" class="kimui-input__inner">
+		  </div>
+
+		  <br/>
+		  <br/>
+
+		  <div class="kimui-input is-warn">
+			<i class="kimui-input__icon icon-warning-sign"></i>
+			<input autocomplete="off" placeholder="警告输入框" type="text" rows="2" validateevent="true" class="kimui-input__inner">
+			<p class='vilidateTip'><span class='tipMsg' style="color:#f7ba2a;">警告提示信息</span></p>
+		  </div>
+
+		  <br/>
+		  <br/>
+
+		  <div class="kimui-input is-error">
+			<i class="kimui-input__icon icon-remove-circle"></i>
+			<input autocomplete="off" placeholder="错误输入框" type="text" rows="2" validateevent="true" class="kimui-input__inner">
+			<p class='vilidateTip'><span class='tipMsg' style="color:#e74c3c;">错误提示信息</span></p>
+		  </div>
+
+		  <br/>
+		  <br/>
+
+		  <div class="kimui-input is-success">
+			<i class="kimui-input__icon icon-ok-circle"></i>
+			<input autocomplete="off" placeholder="成功输入框" type="text" rows="2" validateevent="true" class="kimui-input__inner">
+			<p class='vilidateTip'><span class='tipMsg' style="color:#2ecc71;">成功提示信息</span></p>
+		  </div>
+
+		  <h3>带图标输入框</h3><br/>
+
+		  <div class="kimui-input">
+			<i class="kimui-input__icon icon-search is-clickable"></i>
+			<input autocomplete="off" placeholder="带图标输入框" icon="search" type="text" rows="2" validateevent="true" oniconclick="function n(n){var r=arguments.length;return r?r>1?t.apply(e,arguments):t.call(e,n):t.call(e)}" class="kimui-input__inner">
+		  </div>
+
+		  <h3>带规格输入框</h3><br/>
+
+		  <div class="kimui-input kimui-input-group kimui-input-group--prepend">
+			<div class="kimui-input-group__prepend">Http://</div>
+			<input autocomplete="off" placeholder="请输入内容" type="text" rows="2" validateevent="true" class="kimui-input__inner">
+		  </div>
+
+		  <br/>
+		  <br/>
+
+		  <div class="kimui-input kimui-input-group kimui-input-group--append">
+			<input autocomplete="off" placeholder="请输入内容" type="text" rows="2" validateevent="true" class="kimui-input__inner">
+			<div class="kimui-input-group__append">.com</div>
+		  </div>
+
+		  <br/>
+		  <br/>
+
+		  <div class="kimui-input kimui-input-group kimui-input-group--append kimui-input-group--prepend">
+			<div class="kimui-input-group__prepend">Http://</div>
+			<input autocomplete="off" placeholder="请输入内容" type="text" rows="2" validateevent="true" class="kimui-input__inner">
+			<div class="kimui-input-group__append">.com</div>
+		  </div>
+
+		  <h3>输入框尺寸</h3><br/>
+
+		  <div class="kimui-input kimui-input--mini">
+			<input autocomplete="off" placeholder="超小型输入框" type="text" rows="2" validateevent="true" class="kimui-input__inner">
+		  </div>
+
+		  <br/>
+		  <br/>
+
+		  <div class="kimui-input kimui-input--small">
+			<input autocomplete="off" placeholder="小型输入框" type="text" rows="2" validateevent="true" class="kimui-input__inner">
+		  </div>
+
+		  <br/>
+		  <br/>
+
+		  <div class="kimui-input">
+			<input autocomplete="off" placeholder="正常输入框" type="text" rows="2" validateevent="true" class="kimui-input__inner">
+		  </div>
+
+		  <br/>
+		  <br/>
+
+		  <div class="kimui-input kimui-input--large">
+			<input autocomplete="off" placeholder="超大输入框" type="text" rows="2" validateevent="true" class="kimui-input__inner">
+		  </div>
+
+
+	 </div>
+
+	 <!-- 引入工具包 -->
+	 <script type="text/javascript" src="../util/jquery-3.0.0.min.js"></script>	
+	 <script>
+		
+	 </script>
+ </body>
+</html>

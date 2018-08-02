@@ -1,0 +1,898 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>复选框demo</title>
+  <link href="../util/icomoon/style.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+
+ span[class^="kimicon-"], [class*=" kimicon-"] {
+	font-size:20px;
+ }
+.kimicon-check-square, .kimicon-minus-square, .kimicon-disc {
+	color:#20a0ff;
+}
+.kimicon-circle, .kimicon-square{
+	color:#bfcbd9
+}
+
+.kimicon-circle:hover, .kimicon-square:hover{
+	color:#20a0ff;
+}
+
+.kimui-checkbox {
+    color: #1f2d3d;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    white-space: nowrap;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none
+}
+
+.kimui-checkbox+.kimui-checkbox {
+    margin-left: 15px
+}
+
+.kimui-checkbox__input {
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+    line-height: 1;
+    position: relative;
+    vertical-align: middle
+}
+
+/* .kimui-checkbox__input.is-indeterminate .checkbox-icon {
+    background-color: #20a0ff;
+    border-color: #0190fe
+}
+
+.kimui-checkbox__input.is-indeterminate .checkbox-icon:before {
+    content: "";
+    position: absolute;
+    display: block;
+    border: 1px solid #fff;
+    margin-top: -1px;
+    left: 3px;
+    right: 3px;
+    top: 50%
+}
+
+.kimui-checkbox__input.is-indeterminate .checkbox-icon:after {
+    display: none
+} */
+
+/* .kimui-checkbox__input.is-focus .checkbox-icon {
+    border-color: #20a0ff
+}
+
+.kimui-checkbox__input.is-checked .checkbox-icon {
+    background-color: #20a0ff;
+    border-color: #0190fe
+}
+
+.kimui-checkbox__input.is-checked .checkbox-icon:after {
+    transform: rotate(45deg) scaleY(1)
+} */
+
+.kimui-checkbox__input.is-disabled .checkbox-icon {
+	color: #bbb;
+    cursor: not-allowed
+}
+
+.kimui-checkbox__input.is-disabled .checkbox-icon:after {
+    cursor: not-allowed;
+    border-color: #eef1f6
+}
+
+.kimui-checkbox__input.is-disabled .checkbox-icon+.kimui-checkbox__label {
+    cursor: not-allowed
+}
+
+.kimui-checkbox__input.is-disabled.is-checked .checkbox-icon {
+	color: #bbb;
+}
+
+.kimui-checkbox__input.is-disabled.is-indeterminate .checkbox-icon {
+    color: #bbb;
+}
+
+.kimui-checkbox__input.is-disabled+.kimui-checkbox__label {
+    color: #bbb;
+    cursor: not-allowed
+}
+
+/* .checkbox-icon {
+    display: inline-block;
+    position: relative;
+    border: 1px solid #bfcbd9;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    z-index: 1;
+    transition: border-color .25s cubic-bezier(.71,-.46,.29,1.46),background-color .25s cubic-bezier(.71,-.46,.29,1.46)
+}
+
+.checkbox-icon:hover {
+    border-color: #20a0ff
+}
+
+.checkbox-icon:after {
+    box-sizing: content-box;
+    content: "";
+    border: 2px solid #fff;
+    border-left: 0;
+    border-top: 0;
+    height: 8px;
+    left: 5px;
+    position: absolute;
+    top: 1px;
+    transform: rotate(45deg) scaleY(0);
+    width: 4px;
+    transition: transform .15s cubic-bezier(.71,-.46,.88,.6) .05s;
+    transform-origin: center
+} */
+
+.kimui-checkbox__original {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    margin: 0;
+    width: 0;
+    height: 0;
+    left: -999px
+}
+
+.kimui-checkbox__label {
+    font-size: 14px;
+    padding-left: 5px
+}
+
+.kimui-checkbox-button {
+    position: relative;
+    display: inline-block
+}
+
+.kimui-checkbox-button.is-checked .kimui-checkbox-button__inner {
+    color: #fff;
+    background-color: #20a0ff;
+    border-color: #20a0ff;
+    box-shadow: -1px 0 0 0 #20a0ff
+}
+
+.kimui-checkbox-button.is-disabled .kimui-checkbox-button__inner {
+    color: #bfcbd9;
+    cursor: not-allowed;
+    background-image: none;
+    background-color: #eef1f6;
+    border-color: #d1dbe5;
+    box-shadow: none
+}
+
+.kimui-checkbox-button.is-focus .kimui-checkbox-button__inner {
+    border-color: #20a0ff
+}
+
+.kimui-checkbox-button:first-child .kimui-checkbox-button__inner {
+    border-left: 1px solid #bfcbd9;
+    border-radius: 4px 0 0 4px;
+    box-shadow: none!important
+}
+
+.kimui-checkbox-button:last-child .kimui-checkbox-button__inner {
+    border-radius: 0 4px 4px 0
+}
+
+.kimui-checkbox-button__inner {
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    vertical-align: middle;
+    background: #fff;
+    border: 1px solid #bfcbd9;
+    /* border-left: 0; */
+    color: #1f2d3d;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+    transition: all .3s cubic-bezier(.645,.045,.355,1);
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 0
+}
+
+.kimui-checkbox-button__inner:hover {
+    color: #20a0ff
+}
+
+.kimui-checkbox-button__inner /* [class*=el-icon-] */ {
+    line-height: .9
+}
+
+.kimui-checkbox-button__inner /* [class*=el-icon-]+span */ {
+    margin-left: -6px
+}
+
+.kimui-checkbox-button__original {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    margin: 0;
+    visibility: hidden;
+    left: -999px
+}
+
+.kimui-checkbox-button--large .kimui-checkbox-button__inner {
+    padding: 11px 19px;
+    font-size: 16px;
+    border-radius: 0
+}
+
+.kimui-checkbox-button--small .kimui-checkbox-button__inner {
+    padding: 7px 9px;
+    font-size: 12px;
+    border-radius: 0
+}
+
+.kimui-checkbox-button--mini .kimui-checkbox-button__inner {
+    padding: 4px;
+    font-size: 12px;
+    border-radius: 0
+}
+
+
+
+
+.kimui-radio {
+    color: #1f2d3d;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    white-space: nowrap;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none
+}
+
+.kimui-radio+.kimui-radio {
+    margin-left: 15px
+}
+
+.kimui-radio__input {
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+    line-height: 1;
+    position: relative;
+    vertical-align: middle
+}
+
+/* .kimui-radio__input.is-focus .radio-icon {
+    border-color: #20a0ff
+}
+
+.kimui-radio__input.is-checked .radio-icon {
+    border-color: #20a0ff;
+    background: #20a0ff
+}
+
+.kimui-radio__input.is-checked .radio-icon:after {
+    transform: translate(-50%,-50%) scale(1)
+} */
+
+.kimui-radio__input.is-disabled .radio-icon {
+	color: #bbb;
+    cursor: not-allowed
+}
+
+.kimui-radio__input.is-disabled .radio-icon+.kimui-radio__label {
+    cursor: not-allowed
+}
+
+
+.kimui-radio__input.is-disabled+.kimui-radio__label {
+    color: #bbb;
+    cursor: not-allowed
+}
+
+/* .radio-icon {
+    border: 1px solid #bfcbd9;
+    border-radius: 100%;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    box-sizing: border-box
+}
+
+.radio-icon:hover {
+    border-color: #20a0ff
+}
+
+.radio-icon:after {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #fff;
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    transition: transform .15s cubic-bezier(.71,-.46,.88,.6)
+} */
+
+.kimui-radio__original {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0
+}
+
+.kimui-radio__label {
+    font-size: 14px;
+    padding-left: 5px
+}
+
+.kimui-radio-group {
+    display: inline-block;
+    font-size: 0;
+    line-height: 1;
+    vertical-align: middle
+}
+
+.kimui-radio-group .kimui-radio {
+    font-size: 14px
+}
+
+.kimui-radio-button {
+    position: relative;
+    display: inline-block;
+}
+
+.kimui-radio-button:first-child .kimui-radio-button__inner {
+    border-left: 1px solid #bfcbd9;
+    border-radius: 4px 0 0 4px;
+    box-shadow: none!important
+}
+
+.kimui-radio-button:last-child .kimui-radio-button__inner {
+    border-radius: 0 4px 4px 0
+}
+
+.kimui-radio-button__inner {
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    vertical-align: middle;
+    background: #fff;
+    border: 1px solid #bfcbd9;
+    border-left: 0;
+    color: #1f2d3d;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+    transition: all .3s cubic-bezier(.645,.045,.355,1);
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 0
+}
+
+.kimui-radio-button__inner:hover {
+    color: #20a0ff
+}
+
+.kimui-radio-button__inner {
+    line-height: .9
+}
+
+.kimui-radio-button__inner {
+    margin-left: 5px
+}
+
+.kimui-radio-button__orig-radio {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    z-index: -1;
+    left: -999px
+}
+
+.kimui-radio-button__orig-radio:checked+.kimui-radio-button__inner {
+    color: #fff;
+    background-color: #20a0ff;
+    border-color: #20a0ff;
+    box-shadow: -1px 0 0 0 #20a0ff
+}
+
+.kimui-radio-button__orig-radio:disabled+.kimui-radio-button__inner {
+    color: #bfcbd9;
+    cursor: not-allowed;
+    background-image: none;
+    background-color: #eef1f6;
+    border-color: #d1dbe5;
+    box-shadow: none
+}
+
+.kimui-radio-button--large .kimui-radio-button__inner {
+    padding: 11px 19px;
+    font-size: 16px;
+    border-radius: 0
+}
+
+.kimui-radio-button--small .kimui-radio-button__inner {
+    padding: 7px 9px;
+    font-size: 12px;
+    border-radius: 0
+}
+
+.kimui-radio-button--mini .kimui-radio-button__inner {
+    padding: 4px;
+    font-size: 12px;
+    border-radius: 0
+}
+  </style>
+ </head>
+ <body>
+	 
+	 <!-- 复选框 -->
+	 <div style="width:80%;margin:60px auto;text-align:center;">
+		  <h3>复选框</h3><br/>
+		  <div class="kimui-checkbox-group">
+			<label class="kimui-checkbox">
+				<span class="kimui-checkbox__input is-checked">
+					<span class="checkbox-icon kimicon-square"  onclick="checkBoxChecked(this)"></span>
+					<input type="checkbox" class="kimui-checkbox__original" value="复选框 A">
+				</span>
+				<span class="kimui-checkbox__label">复选框 A</span>
+			</label>
+			<label class="kimui-checkbox">
+				<span class="kimui-checkbox__input">
+					<span class="checkbox-icon kimicon-square"  onclick="checkBoxChecked(this)"></span>
+					<input type="checkbox" class="kimui-checkbox__original" value="复选框 B">
+				</span>
+				<span class="kimui-checkbox__label">复选框 B</span>
+			</label>
+			<label class="kimui-checkbox">
+				<span class="kimui-checkbox__input">
+					<span class="checkbox-icon kimicon-minus-square"  onclick="checkBoxChecked(this)"></span>
+					<input type="checkbox" class="kimui-checkbox__original" value="复选框 C">
+				</span>
+				<span class="kimui-checkbox__label">复选框 C</span>
+			</label>
+			<label class="kimui-checkbox">
+				<span class="kimui-checkbox__input is-disabled">
+					<span class="checkbox-icon kimicon-square"  ></span>
+					<input type="checkbox" disabled="disabled" class="kimui-checkbox__original" value="禁用">
+				</span>
+				<span class="kimui-checkbox__label">禁用</span>
+			</label>
+			<label class="kimui-checkbox">
+				<span class="kimui-checkbox__input is-disabled is-checked">
+					<span class="checkbox-icon kimicon-check-square" ></span>
+					<input type="checkbox" disabled="disabled" class="kimui-checkbox__original" value="选中且禁用">
+				</span>
+				<span class="kimui-checkbox__label">选中且禁用</span>
+			</label>
+		</div>
+	 </div>
+
+	 <!-- 复选框 -->
+	 <div style="width:80%;margin:60px auto;text-align:center;">
+		  <h3>全选</h3><br/>
+		  <div class="checkboxWrap">
+			  <label class="kimui-checkbox checkAll">
+				  <span class="kimui-checkbox__input">
+					  <span class="checkbox-icon kimicon-minus-square" onclick="checkedAll(this)"></span>
+					  <input type="checkbox" class="kimui-checkbox__original" value="全选">
+				  </span>
+				  <span class="kimui-checkbox__label">全选</span>
+			  </label>
+
+			  <div></div>
+
+			  <div class="kimui-checkbox-group">
+				<label class="kimui-checkbox">
+					<span class="kimui-checkbox__input is-checked">
+						<span class="checkbox-icon kimicon-check-square"  onclick="checkBoxChecked(this)"></span>
+						<input type="checkbox" class="kimui-checkbox__original" value="广州">
+					</span>
+					<span class="kimui-checkbox__label">广州</span>
+				</label>
+				<label class="kimui-checkbox">
+					<span class="kimui-checkbox__input">
+						<span class="checkbox-icon kimicon-square"  onclick="checkBoxChecked(this)"></span>
+						<input type="checkbox" class="kimui-checkbox__original" value="深圳">
+					</span>
+					<span class="kimui-checkbox__label">深圳</span>
+				</label>
+				<label class="kimui-checkbox">
+					<span class="kimui-checkbox__input">
+						<span class="checkbox-icon kimicon-minus-square"  onclick="checkBoxChecked(this)"></span>
+						<input type="checkbox" class="kimui-checkbox__original" value="北京">
+					</span>
+					<span class="kimui-checkbox__label">北京</span>
+				</label>
+				<label class="kimui-checkbox">
+					<span class="kimui-checkbox__input ">
+						<span class="checkbox-icon kimicon-square" onclick="checkBoxChecked(this)"></span>
+						<input type="checkbox" class="kimui-checkbox__original" value="上海">
+					</span>
+					<span class="kimui-checkbox__label">上海</span>
+				</label>
+				<label class="kimui-checkbox">
+					<span class="kimui-checkbox__input ">
+						<span class="checkbox-icon kimicon-check-square" onclick="checkBoxChecked(this)"></span>
+						<input type="checkbox" class="kimui-checkbox__original" value="武汉">
+					</span>
+					<span class="kimui-checkbox__label">武汉</span>
+				</label>
+			</div>
+		</div>
+	 </div>
+
+	 <div style="width:80%;margin:60px auto;text-align:center;">
+		<h3>按钮组复选框</h3><br/>
+		<div style="margin: 15px 0px;"></div>
+		<div class="kimui-checkbox-group">
+			<label class="kimui-checkbox-button is-checked" onclick="checkButton(this)">
+				<input type="checkbox" class="kimui-checkbox-button__original" value="上海">
+				<span class="kimui-checkbox-button__inner">上海</span>
+			</label>
+			<label class="kimui-checkbox-button" onclick="checkButton(this)">
+				<input type="checkbox" class="kimui-checkbox-button__original" value="北京">
+				<span class="kimui-checkbox-button__inner">北京</span>
+			</label>
+			<label class="kimui-checkbox-button" onclick="checkButton(this)">
+				<input type="checkbox" class="kimui-checkbox-button__original" value="广州">
+				<span class="kimui-checkbox-button__inner">广州</span>
+			</label>
+			<label class="kimui-checkbox-button" onclick="checkButton(this)">
+				<input type="checkbox" class="kimui-checkbox-button__original" value="深圳">
+				<span class="kimui-checkbox-button__inner">深圳</span>
+			</label>
+		</div>
+		<div style="margin: 15px 0px;"></div>
+		<div class="kimui-checkbox-group">
+			<label class="kimui-checkbox-button kimui-checkbox-button--small" onclick="checkButton(this)">
+				<input type="checkbox" class="kimui-checkbox-button__original" value="上海">
+				<span class="kimui-checkbox-button__inner">上海</span>
+			</label>
+			<label class="kimui-checkbox-button kimui-checkbox-button--small is-checked" onclick="checkButton(this)">
+				<input type="checkbox" class="kimui-checkbox-button__original" value="北京">
+				<span class="kimui-checkbox-button__inner">北京</span>
+			</label>
+			<label class="kimui-checkbox-button kimui-checkbox-button--small" onclick="checkButton(this)">
+				<input type="checkbox" class="kimui-checkbox-button__original" value="广州">
+				<span class="kimui-checkbox-button__inner">广州</span>
+			</label>
+			<label class="kimui-checkbox-button kimui-checkbox-button--small is-disabled" onclick="checkButton(this)">
+				<input type="checkbox" disabled="disabled" class="kimui-checkbox-button__original" value="深圳">
+				<span class="kimui-checkbox-button__inner">深圳</span>
+			</label>
+		</div>
+		<div style="margin: 15px 0px;"></div>
+		<div class="kimui-checkbox-group">
+			<label class="kimui-checkbox-button kimui-checkbox-button--large" onclick="checkButton(this)">
+				<input type="checkbox" class="kimui-checkbox-button__original" value="上海">
+				<span class="kimui-checkbox-button__inner">上海</span>
+			</label>
+			<label class="kimui-checkbox-button kimui-checkbox-button--large is-checked" onclick="checkButton(this)">
+				<input type="checkbox" class="kimui-checkbox-button__original" value="北京">
+				<span class="kimui-checkbox-button__inner">北京</span>
+			</label>
+			<label class="kimui-checkbox-button kimui-checkbox-button--large " onclick="checkButton(this)">
+				<input type="checkbox" class="kimui-checkbox-button__original" value="广州">
+				<span class="kimui-checkbox-button__inner" >广州</span>
+			</label>
+			<label class="kimui-checkbox-button kimui-checkbox-button--large is-checked" onclick="checkButton(this)">
+				<input type="checkbox" class="kimui-checkbox-button__original" value="深圳">
+				<span class="kimui-checkbox-button__inner">深圳</span>
+			</label>
+		</div>
+	</div>
+
+	 
+
+	 <!-- 单选框 -->
+	 <div style="width:80%;margin:60px auto;text-align:center;">
+		  <h3>单选框</h3><br/>
+		  <div class="kimui-radio-group">
+			<label class="kimui-radio">
+				<span class="kimui-radio__input is-checked">
+					<span class="radio-icon kimicon-circle"  onclick="radioChecked(this)"></span>
+					<input type="radio" class="kimui-radio__original" value="备选项1">
+				</span>
+				<span class="kimui-radio__label">备选项1</span>
+			</label>
+			<label class="kimui-radio">
+				<span class="kimui-radio__input">
+					<span class="radio-icon kimicon-circle"  onclick="radioChecked(this)"></span>
+					<input type="radio" class="kimui-radio__original" value="备选项2">
+				</span>
+				<span class="kimui-radio__label">备选项2</span>
+			</label>
+			<label class="kimui-radio">
+				<span class="kimui-radio__input is-disabled">
+					<span class="radio-icon kimicon-circle"  onclick="radioChecked(this)"></span>
+					<input type="radio" class="kimui-radio__original" value="禁选">
+				</span>
+				<span class="kimui-radio__label">禁选</span>
+			</label>
+		</div>
+	 </div>
+
+	 <!-- 单选框 -->
+	 <div style="width:80%;margin:60px auto;text-align:center;">
+		  <h3>按钮组单选框</h3><br/>
+		<div class="kimui-radio-group">
+			<label class="kimui-radio-button kimui-radio-button--small is-active">
+				<input type="radio" class="kimui-radio-button__orig-radio" value="上海">
+				<span class="kimui-radio-button__inner">上海</span>
+			</label>
+			<label class="kimui-radio-button kimui-radio-button--small is-disabled">
+				<input type="radio" disabled="disabled" class="kimui-radio-button__orig-radio" value="北京">
+				<span class="kimui-radio-button__inner">北京</span>
+			</label>
+			<label class="kimui-radio-button kimui-radio-button--small">
+				<input type="radio" class="kimui-radio-button__orig-radio" value="广州">
+				<span class="kimui-radio-button__inner">广州</span>
+			</label>
+			<label class="kimui-radio-button kimui-radio-button--small">
+				<input type="radio" class="kimui-radio-button__orig-radio" value="深圳">
+				<span class="kimui-radio-button__inner">深圳</span>
+			</label>
+		</div>
+
+		<div style="margin: 15px 0px;"></div>
+
+		<div class="kimui-radio-group">
+			<label class="kimui-radio-button is-active">
+				<input type="radio" class="kimui-radio-button__orig-radio" value="上海">
+				<span class="kimui-radio-button__inner">上海</span>
+			</label>
+			<label class="kimui-radio-button ">
+				<input type="radio" class="kimui-radio-button__orig-radio" value="北京">
+				<span class="kimui-radio-button__inner">北京</span>
+			</label>
+			<label class="kimui-radio-button">
+				<input type="radio" class="kimui-radio-button__orig-radio" value="广州">
+				<span class="kimui-radio-button__inner">广州</span>
+			</label>
+			<label class="kimui-radio-button is-disabled">
+				<input type="radio" disabled="disabled" class="kimui-radio-button__orig-radio" value="深圳">
+				<span class="kimuil-radio-button__inner">深圳</span>
+			</label>
+		</div>
+
+		<div style="margin: 15px 0px;"></div>
+
+		<div class="kimui-radio-group">
+			<label class="kimui-radio-button kimui-radio-button--large is-disabled">
+				<input type="radio" disabled="disabled" class="kimui-radio-button__orig-radio" value="上海">
+				<span class="kimui-radio-button__inner">上海</span>
+			</label>
+			<label class="kimui-radio-button kimui-radio-button--large">
+				<input type="radio" disabled="disabled" class="kimui-radio-button__orig-radio" value="北京">
+				<span class="kimui-radio-button__inner">北京</span>
+			</label>
+			<label class="kimui-radio-button kimui-radio-button--large">
+				<input type="radio" disabled="disabled" class="kimui-radio-button__orig-radio" value="广州">
+				<span class="kimui-radio-button__inner">广州</span>
+			</label>
+			<label class="kimui-radio-button kimui-radio-button--large">
+				<input type="radio" disabled="disabled" class="kimui-radio-button__orig-radio" value="深圳">
+				<span class="kimuil-radio-button__inner">深圳</span>
+			</label>
+		</div>
+
+	 </div>
+
+
+	 
+	<!-- 单选框 -->
+	 <div style="width:80%;margin:60px auto;text-align:center;">
+		  <h3>封装后选框</h3><br/>
+		  <kim-radio id="kimRadio"></kim-radio>
+		  <kim-checkbox id="kimCheckBox"></kim-checkbox>
+	 </div>
+
+
+	 <!-- 引入工具包 -->
+	 <script type="text/javascript" src="../util/jquery-3.0.0.min.js"></script>	
+	 <script type="text/javascript" src="../radio/radio.js"></script>	
+	 <script type="text/javascript" src="../checkbox/checkbox.js"></script>	
+	 <script>
+
+		$("#kimRadio").kimRadio({
+			radioGroup: true, //是否显示单选group
+			radioAttribute: [ //单选属性
+				{
+					inputName: 'sex', // 表单提交的name属性
+					value: '0', // 表单的值
+					label: '女', // 显示名
+					disabled: false, // 是否禁选
+					checked: true // 是否已选择
+				},
+				{
+					inputName: 'sex',
+					value: '1',
+					label: '男',
+					disabled: false,
+					checked: false
+				},
+				{
+					inputName: 'sex',
+					value: '2',
+					label: '保密',
+					disabled: true,
+					checked: false
+				}
+			]
+		});
+
+		$("#kimCheckBox").kimCheckBox({
+			checkboxGroup: true, //是否显示单选group
+			checkboxAttribute: [ //单选属性
+				{
+					inputName: 'guangzhou', // 表单提交的name属性
+					value: 'guangzhou', // 表单的值
+					label: '广州', // 显示名
+					disabled: false, // 是否禁选
+					checked: true // 是否已选择
+				},
+				{
+					inputName: 'shenzhen',
+					value: 'shenzhen',
+					label: '深圳',
+					disabled: false,
+					checked: false
+				},
+				{
+					inputName: 'shanghai',
+					value: 'shanghai',
+					label: '上海',
+					disabled: true,
+					checked: true
+				}
+			]
+		});
+
+		$(function(){
+			checkInit();
+		})
+		// 复选框
+		function checkBoxChecked(obj){
+			if($(obj).hasClass("kimicon-check-square")){
+				$(obj).addClass("kimicon-square").removeClass("kimicon-check-square");
+				if($(obj).parents(".checkboxWrap").find(".kimui-checkbox").hasClass("checkAll") && 
+				   ($(obj).parents(".kimui-checkbox").siblings().find(".checkbox-icon").hasClass("kimicon-check-square") || $(obj).parents(".kimui-checkbox").siblings().find(".checkbox-icon").hasClass("kimicon-minus-square"))){
+				   $(obj).parents(".checkboxWrap").find(".checkAll .checkbox-icon").removeClass("kimicon-check-square").removeClass("kimicon-square").addClass("kimicon-minus-square");
+				}else {
+					 $(obj).parents(".checkboxWrap").find(".checkAll .checkbox-icon").removeClass("kimicon-minus-square").removeClass("kimicon-check-square").addClass("kimicon-square");
+				}
+			}else if($(obj).hasClass("kimicon-minus-square")){
+				$(obj).addClass("kimicon-check-square").removeClass("kimicon-minus-square");
+				if($(obj).parents(".checkboxWrap").find(".kimui-checkbox").hasClass("checkAll") && 
+				   ($(obj).parents(".kimui-checkbox").siblings().find(".checkbox-icon").hasClass("kimicon-minus-square") ||    $(obj).parents(".kimui-checkbox").siblings().find(".checkbox-icon").hasClass("kimicon-square"))){
+					$(obj).parents(".checkboxWrap").find(".checkAll .checkbox-icon").removeClass("kimicon-check-square").removeClass("kimicon-square").addClass("kimicon-minus-square");
+				}else{
+					$(obj).parents(".checkboxWrap").find(".checkAll .checkbox-icon").removeClass("kimicon-minus-square").removeClass("kimicon-square").addClass("kimicon-check-square");
+				}
+			}else if($(obj).hasClass("kimicon-square")){
+				$(obj).addClass("kimicon-check-square").removeClass("kimicon-square");
+				if($(obj).parents(".checkboxWrap").find(".kimui-checkbox").hasClass("checkAll") && 
+				   ($(obj).parents(".kimui-checkbox").siblings().find(".checkbox-icon").hasClass("kimicon-minus-square") ||    $(obj).parents(".kimui-checkbox").siblings().find(".checkbox-icon").hasClass("kimicon-square"))){
+					$(obj).parents(".checkboxWrap").find(".checkAll .checkbox-icon").removeClass("kimicon-check-square").removeClass("kimicon-square").addClass("kimicon-minus-square");
+				}else{
+					$(obj).parents(".checkboxWrap").find(".checkAll .checkbox-icon").removeClass("kimicon-minus-square").removeClass("kimicon-square").addClass("kimicon-check-square");
+				}
+			}
+		}
+		//选择按钮
+		function checkButton(obj){
+			stopDefault(window.event)
+			$(obj).toggleClass("is-checked");
+		}
+		// 全选
+		function checkedAll(obj){
+			if($(obj).hasClass("kimicon-check-square")){
+				$(obj).addClass("kimicon-square").removeClass("kimicon-check-square");
+				$(obj).parents(".checkboxWrap").find(".kimui-checkbox-group .kimui-checkbox .kimui-checkbox__input .checkbox-icon").removeClass("kimicon-check-square").addClass("kimicon-square");
+			}else if($(obj).hasClass("kimicon-minus-square")){
+				$(obj).addClass("kimicon-check-square").removeClass("kimicon-minus-square");
+				$(obj).parents(".checkboxWrap").find(".kimui-checkbox-group .kimui-checkbox .kimui-checkbox__input .checkbox-icon").removeClass("kimicon-square").removeClass("kimicon-minus-square").addClass("kimicon-check-square");
+			}else if($(obj).hasClass("kimicon-square")){
+				$(obj).addClass("kimicon-check-square").removeClass("kimicon-square");
+				$(obj).parents(".checkboxWrap").find(".kimui-checkbox-group .kimui-checkbox .kimui-checkbox__input .checkbox-icon").removeClass("kimicon-square").removeClass("kimicon-minus-square").addClass("kimicon-check-square");
+			}
+		}
+		// 单选
+		function radioChecked(obj){
+			if($(obj).hasClass("kimicon-disc")){
+				
+			}else if($(obj).hasClass("kimicon-circle")){
+				$(obj).addClass("kimicon-disc").removeClass("kimicon-circle");
+				$(obj).parents(".kimui-radio").siblings().find(".kimui-radio__input .radio-icon").addClass("kimicon-circle").removeClass("kimicon-disc");
+			}
+		}
+		//初始化单选
+		function checkInit(){
+			$(".kimui-radio__input").each(function(i){
+				if($(this).hasClass("is-checked")){
+					$(this).find(".radio-icon").removeClass("kimicon-circle").addClass("kimicon-disc");
+				}
+				if($(this).hasClass("is-disabled")){
+					$(this).find(".kimui-radio__original").attr("disabled","disabled");
+					$(this).find(".radio-icon").attr("onclick","");
+				}
+			});
+			$(".kimui-checkbox__input").each(function(i){
+				if($(this).hasClass("is-checked")){
+					$(this).find(".checkbox-icon").removeClass("kimicon-square").removeClass("kimicon-minus-square").addClass("kimicon-check-square");
+				}
+				if($(this).hasClass("is-disabled")){
+					$(this).find(".kimui-checkbox__original").attr("disabled","disabled");
+					$(this).find(".checkbox-icon").attr("onclick","");
+				}
+			})
+		}
+
+		//阻止事件冒泡
+		function stopPropagation(e) {
+			// 如果提供了事件对象，则这是一个非IE浏览器
+			if (e && e.stopPropagation){
+				// 因此它支持W3C的stopPropagation()方法
+				e.stopPropagation();
+			}else{
+				// 否则，我们需要使用IE的方式来取消事件冒泡
+				window.event.cancelBubble = true;
+			}
+		};
+
+		//阻止浏览器的默认行为 
+		function stopDefault(e) { 
+			//阻止默认浏览器动作(W3C) 
+			if ( e && e.preventDefault ){ 
+				e.preventDefault(); 
+			//IE中阻止函数器默认动作的方式 
+			}else{
+				window.event.returnValue = false; 
+			}
+			return false; 
+		}
+		
+		
+	 </script>
+ </body>
+</html>

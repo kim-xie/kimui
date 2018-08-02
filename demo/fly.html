@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>抛物线demo</title>
+  <style type="text/css">
+	*{padding:0;margin:0;}
+	body{family:"微软雅黑";font-size:12px;}
+	a{text-decoration:none;}
+	ul,ol li{list-style:none;} 
+	p{
+		height: 32px;
+		line-height: 32px;
+		text-align: center;
+		font-size: 14px;
+		background: #dddddd;
+	}
+	#divSource div,#fly{
+	    width:240px;
+		height:200px;
+	}
+	#divTarget{
+		position:fixed;
+		bottom:0;
+		left:50%;
+		margin-left:-80px;
+		width:160px;
+		height:160px; 
+		line-height:160px;
+		text-align:center;
+		background: #ddd;
+	}
+ </style>
+ </head>
+ <body>
+	 <!-- 商品 -->
+	 <div id="divSource">
+        <div style="cursor:pointer;">
+            <img id="fly" src="http://120.78.212.11/kim/upload/imgs/content/kim/201805121953533.png"></img>
+			<p><a href="javascript:addToCar();">点我加入购物车</a></p>
+        </div>
+    </div>
+
+	<!-- 购物车 -->
+	<div id="divTarget">购物车</div>
+
+	 <!-- 引入工具包 -->
+	 <script type="text/javascript" src="../util/jquery-3.0.0.min.js"></script>	
+	 <script type="text/javascript" src="../fly/fly.js"></script> 
+
+	 <script type="text/javascript">
+		
+		//点图片触发加入购物车
+		$("#divSource #fly").bind("click",function(){
+			addToCar();
+		});
+		
+		//加入购物车
+		function addToCar(){
+			//获取目的对象的坐标位置
+			var targetOffset = $("#divTarget").offset();
+			//商品初始坐标
+		    var X,Y;
+			//获取商品初始位置
+            var img = $("#fly");
+			if(img.offset()){
+				X = img.offset().left - $(window).scrollLeft();
+				Y = img.offset().top - $(window).scrollTop();
+			}
+			
+			//创建一个动画对象
+			var ball = $('<img id="ballFly" style="display: block;width: 50px;height: 50px;border-radius: 50px;position: fixed;z-index: 100000;" src="'+img.attr("src")+'">');
+			
+			//创建动画对象
+			ball.fly({
+				start: {
+					left: X + img.width() / 2 - 25, //开始位置的X坐标（必填）
+					top: Y + img.height() / 2 - 25  //开始位置的Y坐标（必填）
+				},
+				end: {
+					left: targetOffset.left + 10,   //结束的X坐标（必填）
+					top: targetOffset.top + 10,     //结束的Y坐标（必填）
+					width: 10,                      //结束时宽度
+					height: 10                      //结束时高度
+				},
+				onEnd: function () { //结束回调
+					//移除动画dom
+					this.destroy(); 
+					//这里可以执行扩展方法--回调函数
+				}
+			});
+		}
+			
+	 </script>
+ </body>
+</html>

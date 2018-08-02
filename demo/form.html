@@ -1,0 +1,958 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>表单demo</title>
+  <link href="../util/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+	*{padding:0;margin:0;}
+	body{family:"微软雅黑";font-size:12px;}
+	a{text-decoration:none;}
+	ul,ol li{list-style:none;} 
+.kimui-input,.kimui-select,.kimui-textarea {
+    outline: 0;
+    -webkit-transition: border-color .3s cubic-bezier(.65,.05,.35,.5);
+    transition: border-color .3s cubic-bezier(.65,.05,.35,.5);
+    -webkit-box-sizing: border-box!important;
+    -moz-box-sizing: border-box!important;
+    box-sizing: border-box!important
+}
+
+.kimui-input,.kimui-select,.kimui-textarea {
+    height: 36px;
+    line-height: 36px;
+    line-height: 36px\9;
+    border: 1px solid #bfcbd9;
+    background-color: #fff;
+    border-radius: 4px
+}
+
+.kimui-form-label,.kimui-form-mid,.kimui-textarea {
+    line-height: 20px;
+    position: relative
+}
+
+.kimui-input,.kimui-textarea {
+    display: block;
+    width: 100%;
+    padding-left: 10px
+}
+
+.kimui-input:hover,.kimui-textarea:hover {
+    border-color: #8391a5
+}
+
+.kimui-input:focus,.kimui-textarea:focus {
+    border-color: #20a0ff
+}
+
+.kimui-textarea {
+    min-height: 100px;
+    height: auto;
+    padding: 6px 10px;
+    resize: vertical
+}
+
+.kimui-select {
+    padding: 0 10px
+}
+
+.kimui-form input[type=checkbox],.kimui-form input[type=radio],.kimui-form select {
+    display: none
+}
+
+.kimui-form-item {
+    margin-bottom: 15px;
+    clear: both;
+    *zoom:1}
+
+.kimui-form-item:after {
+    content: '\20';
+    clear: both;
+    *zoom:1;display: block;
+    height: 0
+}
+
+.kimui-input__icon {
+    position: absolute;
+    width: 35px;
+    height: 100%;
+    right: 0;
+    top: 2px;
+	font-size: 20px;
+    text-align: center;
+    color: #bfcbd9;
+    transition: all .3s
+}
+
+.kimui-input__icon:after {
+    content: "";
+    height: 100%;
+    width: 0;
+    display: inline-block;
+    vertical-align: middle
+}
+
+.kimui-input__icon+.kimui-input__inner {
+    padding-right: 35px
+}
+
+.kimui-input__icon.is-clickable:hover {
+    cursor: pointer;
+    color: #8391a5
+}
+
+.kimui-input__icon.is-clickable:hover+.kimui-input__inner {
+    border-color: #8391a5
+}
+
+.kimui-form-label {
+    float: left;
+    display: block;
+    padding: 9px 15px;
+    width: 80px;
+    font-weight: 400;
+    text-align: right;
+	font-size: 14px;
+    color: #48576a;
+}
+
+.kimui-form-item .kimui-inline {
+    margin-bottom: 5px;
+    margin-right: 10px
+}
+
+.kimui-input-block,.kimui-input-inline {
+    position: relative
+}
+
+.kimui-input-block {
+    margin-left: 110px;
+    min-height: 36px
+}
+
+.kimui-input-inline {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.kimui-form-item .kimui-input-inline {
+    float: left;
+    width: 190px;
+    margin-right: 10px
+}
+
+.kimui-form-text .kimui-input-inline {
+    width: auto
+}
+
+.kimui-form-mid {
+    float: left;
+    display: block;
+    padding: 8px 0;
+    margin-right: 10px
+}
+
+.kimui-form-danger+.kimui-form-select .kimui-input,.kimui-form-danger:focus {
+    border: 1px solid #20a0ff!important
+}
+
+.kimui-form-select {
+    position: relative
+}
+
+.kimui-form-select .kimui-input {
+    padding-right: 30px;
+    cursor: pointer
+}
+
+.kimui-form-select .kimui-edge {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -3px;
+    cursor: pointer;
+    border-width: 6px;
+    border-top-color: #c2c2c2;
+    border-top-style: solid;
+    transition: all .3s;
+    -webkit-transition: all .3s
+}
+
+.kimui-form-select dl {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 42px;
+    padding: 5px 0;
+    z-index: 999;
+    min-width: 100%;
+    border: 1px solid #d2d2d2;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.12);
+    box-sizing: border-box
+}
+
+.kimui-form-select dl dd,.kimui-form-select dl dt {
+    padding: 0 10px;
+    line-height: 36px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.kimui-form-select dl dt {
+    font-size: 12px;
+    color: #999
+}
+
+.kimui-form-select dl dd {
+    cursor: pointer
+}
+
+.kimui-form-select dl dd:hover {
+    background-color: #f2f2f2
+}
+
+.kimui-form-select .kimui-select-group dd {
+    padding-left: 20px
+}
+
+.kimui-form-select dl dd.kimui-this {
+    background-color: #5FB878;
+    color: #fff
+}
+
+.kimui-form-checkbox,.kimui-form-select dl dd.kimui-disabled {
+    background-color: #fff
+}
+
+.kimui-form-selected dl {
+    display: block
+}
+
+.kimui-form-checkbox,.kimui-form-checkbox *,.kimui-form-radio,.kimui-form-radio *,.kimui-form-switch {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.kimui-form-selected .kimui-edge {
+    margin-top: -9px;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    margin-top: -3px\9
+}
+
+:root .kimui-form-selected .kimui-edge {
+    margin-top: -9px\0/IE9
+}
+
+.kimui-select-none {
+    margin: 5px 0;
+    text-align: center;
+    color: #999
+}
+
+.kimui-select-disabled .kimui-disabled {
+    border-color: #eee!important
+}
+
+.kimui-select-disabled .kimui-edge {
+    border-top-color: #d2d2d2
+}
+
+.kimui-form-checkbox {
+    position: relative;
+    height: 30px;
+    line-height: 28px;
+    margin-right: 10px;
+    padding-right: 30px;
+    border: 1px solid #d2d2d2;
+    cursor: pointer;
+    font-size: 0;
+    border-radius: 2px;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+    box-sizing: border-box!important
+}
+
+.kimui-form-checkbox:hover {
+    border: 1px solid #c2c2c2
+}
+
+.kimui-form-checkbox span {
+    padding: 0 10px;
+    height: 100%;
+    font-size: 14px;
+    background-color: #d2d2d2;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.kimui-form-checkbox:hover span {
+    background-color: #c2c2c2
+}
+
+.kimui-form-checkbox i {
+    position: absolute;
+    right: 0;
+    width: 30px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center
+}
+
+.kimui-form-checkbox:hover i {
+    color: #c2c2c2
+}
+
+.kimui-form-checked,.kimui-form-checked:hover {
+    border-color: #5FB878
+}
+
+.kimui-form-checked span,.kimui-form-checked:hover span {
+    background-color: #5FB878
+}
+
+.kimui-form-checked i,.kimui-form-checked:hover i {
+    color: #5FB878
+}
+
+.kimui-form-item .kimui-form-checkbox {
+    margin-top: 4px
+}
+
+.kimui-form-checkbox[lay-skin=primary] {
+    height: auto!important;
+    line-height: normal!important;
+    border: none!important;
+    margin-right: 0;
+    padding-right: 0;
+    background: 0 0
+}
+
+.kimui-form-checkbox[lay-skin=primary] span {
+    float: right;
+    padding-right: 15px;
+    line-height: 18px;
+    background: 0 0;
+    color: #666
+}
+
+.kimui-form-checkbox[lay-skin=primary] i {
+    position: relative;
+    top: 0;
+    width: 16px;
+    line-height: 16px;
+    border: 1px solid #d2d2d2;
+    font-size: 12px;
+    border-radius: 2px;
+    background-color: #fff;
+    -webkit-transition: .1s linear;
+    transition: .1s linear
+}
+
+.kimui-form-checkbox[lay-skin=primary]:hover i {
+    border-color: #5FB878;
+    color: #fff
+}
+
+.kimui-form-checked[lay-skin=primary] i {
+    border-color: #5FB878;
+    background-color: #5FB878;
+    color: #fff
+}
+
+.kimui-checkbox-disbaled[lay-skin=primary] span {
+    background: 0 0!important
+}
+
+.kimui-checkbox-disbaled[lay-skin=primary]:hover i {
+    border-color: #d2d2d2
+}
+
+.kimui-form-item .kimui-form-checkbox[lay-skin=primary] {
+    margin-top: 10px
+}
+
+.kimui-form-switch {
+    position: relative;
+    height: 22px;
+    line-height: 22px;
+    width: 42px;
+    padding: 0 5px;
+    margin-top: 8px;
+    border: 1px solid #d2d2d2;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #fff;
+    -webkit-transition: .1s linear;
+    transition: .1s linear
+}
+
+.kimui-form-switch i {
+    position: absolute;
+    left: 5px;
+    top: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 20px;
+    background-color: #d2d2d2;
+    -webkit-transition: .1s linear;
+    transition: .1s linear
+}
+
+.kimui-form-switch em {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    width: 25px;
+    padding: 0!important;
+    text-align: center!important;
+    color: #999!important;
+    font-style: normal!important;
+    font-size: 12px
+}
+
+.kimui-form-onswitch {
+    border-color: #5FB878;
+    background-color: #5FB878
+}
+
+.kimui-form-onswitch i {
+    left: 32px;
+    background-color: #fff
+}
+
+.kimui-form-onswitch em {
+    left: 5px;
+    right: auto;
+    color: #fff!important
+}
+
+.kimui-checkbox-disbaled {
+    border-color: #e2e2e2!important
+}
+
+.kimui-checkbox-disbaled span {
+    background-color: #e2e2e2!important
+}
+
+.kimui-checkbox-disbaled:hover i {
+    color: #fff!important
+}
+
+.kimui-form-radio {
+    line-height: 28px;
+    margin: 6px 10px 0 0;
+    padding-right: 10px;
+    cursor: pointer;
+    font-size: 0
+}
+
+.kimui-form-radio i {
+    margin-right: 8px;
+    font-size: 22px;
+    color: #c2c2c2
+}
+
+.kimui-form-radio span {
+    font-size: 14px
+}
+
+.kimui-form-radio i:hover,.kimui-form-radioed i {
+    color: #5FB878
+}
+
+.kimui-radio-disbaled i {
+    color: #e2e2e2!important
+}
+
+.kimui-form-pane .kimui-form-label {
+    width: 110px;
+    padding: 8px 15px;
+    height: 36px;
+    line-height: 20px;
+    border: 1px solid #bfcbd9;
+    border-radius: 2px 0 0 2px;
+    text-align: center;
+    background-color: #FBFBFB;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -webkit-box-sizing: border-box!important;
+    -moz-box-sizing: border-box!important;
+    box-sizing: border-box!important
+}
+
+.kimui-form-pane .kimui-input-inline {
+    margin-left: -1px
+}
+
+.kimui-form-pane .kimui-input-block {
+    margin-left: 110px;
+    left: -1px
+}
+
+.kimui-form-pane .kimui-input {
+    border-radius: 0 2px 2px 0
+}
+
+.kimui-form-pane .kimui-form-text .kimui-form-label {
+    float: none;
+    width: 100%;
+    border-right: 1px solid #bfcbd9;
+    border-radius: 2px;
+    -webkit-box-sizing: border-box!important;
+    -moz-box-sizing: border-box!important;
+    box-sizing: border-box!important;
+    text-align: left
+}
+
+.kimui-laypage button,.kimui-laypage input,.kimui-nav {
+    -webkit-box-sizing: border-box!important;
+    -moz-box-sizing: border-box!important
+}
+
+.kimui-form-pane .kimui-form-text .kimui-input-inline {
+    display: block;
+    margin: 0;
+    top: -1px;
+    clear: both
+}
+
+.kimui-form-pane .kimui-form-text .kimui-input-block {
+    margin: 0;
+    left: 0;
+    top: -1px
+}
+
+.kimui-form-pane .kimui-form-text .kimui-textarea {
+    min-height: 100px;
+    border-radius: 0 0 2px 2px
+}
+
+.kimui-form-pane .kimui-form-checkbox {
+    margin: 4px 0 4px 10px
+}
+
+.kimui-form-pane .kimui-form-radio,.kimui-form-pane .kimui-form-switch {
+    margin-top: 6px;
+    margin-left: 10px
+}
+
+.kimui-form-pane .kimui-form-item[pane] {
+    position: relative;
+    border: 1px solid #e6e6e6
+}
+
+.kimui-form-pane .kimui-form-item[pane] .kimui-form-label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-width: 0 1px 0 0
+}
+
+.kimui-form-pane .kimui-form-item[pane] .kimui-input-inline {
+    margin-left: 110px
+}
+.kimui-input-block.is-error .kimui-input,.kimui-input-block.is-error .kimui-input__icon {
+    border-color: #e74c3c;
+    box-shadow: none;
+}
+
+.kimui-input-block.is-success .kimui-input,.kimui-input-block.is-success .kimui-input__icon {
+    border-color: #2ecc71;
+    box-shadow: none;
+}
+
+.kimui-input-block.is-warn .kimui-input,.kimui-input-block.is-warn .kimui-input__icon {
+    border-color: #f7ba2a;
+    box-shadow: none;
+}
+.kimui-input-inline.is-error .kimui-input,.kimui-input-inline.is-error .kimui-input__icon {
+    border-color: #e74c3c;
+    box-shadow: none;
+}
+
+.kimui-input-inline.is-success .kimui-input,.kimui-input-inline.is-success .kimui-input__icon {
+    border-color: #2ecc71;
+    box-shadow: none;
+}
+
+.kimui-input-inline.is-warn .kimui-input,.kimui-input-inline.is-warn .kimui-input__icon {
+    border-color: #f7ba2a;
+    box-shadow: none;
+}
+ </style>
+ </head>
+ <body>
+	<div style="width:80%;margin:100px auto;text-align:center;">
+		<h3>表单demo</h3><br/>
+		<form class="kimui-form" action="">
+		  <div class="kimui-form-item">
+			<label class="kimui-form-label">单行输入框</label>
+			<div class="kimui-input-block">
+			  <input type="text" name="title" autocomplete="off" placeholder="请输入标题" class="kimui-input">
+			</div>
+		  </div>
+		  <div class="kimui-form-item">
+			<label class="kimui-form-label">验证必填项</label>
+			<div class="kimui-input-block">
+			  <input type="text" name="username" vilidate="required" trigger="blur" vilidator="checkLen" autocomplete="off" placeholder="请输入" class="kimui-input">
+			</div>
+		  </div>
+		  
+		  <div class="kimui-form-item">
+			<div class="kimui-inline">
+			  <label class="kimui-form-label">验证手机</label>
+			  <div class="kimui-input-inline">
+				<input type="tel" name="phone" vilidate="phone" trigger="blur" message="请输入正确的手机号码" autocomplete="off" class="kimui-input">
+			  </div>
+			</div>
+			<div class="kimui-inline">
+			  <label class="kimui-form-label">验证邮箱</label>
+			  <div class="kimui-input-inline">
+				<input type="text" name="email" vilidate="email" trigger="blur" autocomplete="off" class="kimui-input">
+			  </div>
+			</div>
+		  </div>
+		  
+		  <div class="kimui-form-item">
+			<div class="kimui-inline">
+			  <label class="kimui-form-label">验证数字</label>
+			  <div class="kimui-input-inline">
+				<input type="text" name="number" vilidate="number" trigger="blur" autocomplete="off" class="kimui-input">
+			  </div>
+			</div>
+			<div class="kimui-inline">
+			  <label class="kimui-form-label">验证日期</label>
+			  <div class="kimui-input-inline">
+				<input type="text" name="date" id="date" vilidate="date" trigger="blur" placeholder="yyyy-mm-dd" autocomplete="off" class="kimui-input" >
+			  </div>
+			</div>
+			<div class="kimui-inline">
+			  <label class="kimui-form-label">验证链接</label>
+			  <div class="kimui-input-inline">
+				<input type="tel" name="url" vilidate="url" trigger="blur" autocomplete="off" class="kimui-input">
+			  </div>
+			</div>
+		  </div>
+		  
+		  <div class="kimui-form-item">
+			<label class="kimui-form-label">验证身份证</label>
+			<div class="kimui-input-block">
+			  <input type="text" name="idcard" vilidate="idcard" trigger="blur" placeholder="" autocomplete="off" class="kimui-input">
+			</div>
+		  </div>
+		  <div class="kimui-form-item">
+			<label class="kimui-form-label">自定义验证</label>
+			<div class="kimui-input-inline">
+			  <input type="password" name="password" vilidate="pass" placeholder="请输入密码" autocomplete="off" class="kimui-input">
+			</div>
+			<div class="kimui-form-mid kimui-word-aux">请填写6到12位密码</div>
+		  </div>
+		  
+		  <div class="kimui-form-item">
+			<div class="kimui-inline">
+			  <label class="kimui-form-label">范围</label>
+			  <div class="kimui-input-inline" style="width: 100px;">
+				<input type="text" name="price_min" placeholder="￥" autocomplete="off" class="kimui-input">
+			  </div>
+			  <div class="kimui-form-mid">-</div>
+			  <div class="kimui-input-inline" style="width: 100px;">
+				<input type="text" name="price_max" placeholder="￥" autocomplete="off" class="kimui-input">
+			  </div>
+			</div>
+		  </div>
+		  
+		  <div class="kimui-form-item">
+			<label class="kimui-form-label">单行选择框</label>
+			<div class="kimui-input-block">
+			  <select name="interest" lay-filter="aihao">
+				<option value=""></option>
+				<option value="0">写作</option>
+				<option value="1" selected="">阅读</option>
+				<option value="2">游戏</option>
+				<option value="3">音乐</option>
+				<option value="4">旅行</option>
+			  </select>
+			</div>
+		  </div>
+		  
+		  
+		  <div class="kimui-form-item">
+			<div class="kimui-inline">
+			  <label class="kimui-form-label">分组选择框</label>
+			  <div class="kimui-input-inline">
+				<select name="quiz">
+				  <option value="">请选择问题</option>
+				  <optgroup label="城市记忆">
+					<option value="你工作的第一个城市">你工作的第一个城市</option>
+				  </optgroup>
+				  <optgroup label="学生时代">
+					<option value="你的工号">你的工号</option>
+					<option value="你最喜欢的老师">你最喜欢的老师</option>
+				  </optgroup>
+				</select>
+			  </div>
+			</div>
+			<div class="kimui-inline">
+			  <label class="kimui-form-label">搜索选择框</label>
+			  <div class="kimui-input-inline">
+				<select name="modules" vilidate="required" lay-search="">
+				  <option value="">直接选择或搜索选择</option>
+				  <option value="1">layer</option>
+				  <option value="2">form</option>
+				  <option value="3">layim</option>
+				  <option value="4">element</option>
+				  <option value="5">laytpl</option>
+				  <option value="6">upload</option>
+				  <option value="7">laydate</option>
+				  <option value="8">laypage</option>
+				  <option value="9">flow</option>
+				  <option value="10">util</option>
+				  <option value="11">code</option>
+				  <option value="12">tree</option>
+				  <option value="13">layedit</option>
+				  <option value="14">nav</option>
+				  <option value="15">tab</option>
+				  <option value="16">table</option>
+				  <option value="17">select</option>
+				  <option value="18">checkbox</option>
+				  <option value="19">switch</option>
+				  <option value="20">radio</option>
+				</select>
+			  </div>
+			</div>
+		  </div>
+		  
+		  <div class="kimui-form-item">
+			<label class="kimui-form-label">联动选择框</label>
+			<div class="kimui-input-inline">
+			  <select name="quiz1">
+				<option value="">请选择省</option>
+				<option value="浙江" selected="">浙江省</option>
+				<option value="你的工号">江西省</option>
+				<option value="你最喜欢的老师">福建省</option>
+			  </select>
+			</div>
+			<div class="kimui-input-inline">
+			  <select name="quiz2">
+				<option value="">请选择市</option>
+				<option value="杭州">杭州</option>
+				<option value="宁波" disabled="">宁波</option>
+				<option value="温州">温州</option>
+				<option value="温州">台州</option>
+				<option value="温州">绍兴</option>
+			  </select>
+			</div>
+			<div class="kimui-input-inline">
+			  <select name="quiz3">
+				<option value="">请选择县/区</option>
+				<option value="西湖区">西湖区</option>
+				<option value="余杭区">余杭区</option>
+				<option value="拱墅区">临安市</option>
+			  </select>
+			</div>
+		  </div>
+		  
+		  <div class="kimui-form-item">
+			<label class="kimui-form-label">复选框</label>
+			<div class="kimui-input-block">
+			  <input type="checkbox" name="like[write]" title="写作">
+			  <input type="checkbox" name="like[read]" title="阅读" checked="">
+			  <input type="checkbox" name="like[game]" title="游戏">
+			</div>
+		  </div>
+		  
+		  <div class="kimui-form-item" pane="">
+			<label class="kimui-form-label">原始复选框</label>
+			<div class="kimui-input-block">
+			  <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作" checked="">
+			  <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读">
+			  <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏" disabled="">
+			</div>
+		  </div>
+		  
+		  <div class="kimui-form-item">
+			<label class="kimui-form-label">开关-默认关</label>
+			<div class="kimui-input-block">
+			  <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+			</div>
+		  </div>
+		  <div class="kimui-form-item">
+			<label class="kimui-form-label">开关-默认开</label>
+			<div class="kimui-input-block">
+			  <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+			</div>
+		  </div>
+		  <div class="kimui-form-item">
+			<label class="kimui-form-label">单选框</label>
+			<div class="kimui-input-block">
+			  <input type="radio" name="sex" value="男" title="男" checked="">
+			  <input type="radio" name="sex" value="女" title="女">
+			  <input type="radio" name="sex" value="禁" title="禁用" disabled="">
+			</div>
+		  </div>
+		  <div class="kimui-form-item kimui-form-text">
+			<label class="kimui-form-label">普通文本域</label>
+			<div class="kimui-input-block">
+			  <textarea placeholder="请输入内容" class="kimui-textarea"></textarea>
+			</div>
+		  </div>
+		  <div class="kimui-form-item kimui-form-text">
+			<label class="kimui-form-label">编辑器</label>
+			<div class="kimui-input-block">
+			  <textarea class="kimui-textarea kimui-hide" name="content" vilidate="content" id="LAY_demo_editor"></textarea>
+			</div>
+		  </div>
+		  <div class="kimui-form-item">
+			<div class="kimui-input-block">
+			  <button class="kimui-btn kimui-btn-success" lay-submit="" lay-filter="demo1">立即提交</button>
+			  <button type="reset" class="kimui-btn kimui-btn-info">重置</button>
+			</div>
+		  </div>
+		</form>
+
+
+		
+		<form class="kimui-form kimui-form-pane" action="">
+		  <div class="kimui-form-item">
+			<label class="kimui-form-label">长输入框</label>
+			<div class="kimui-input-block">
+			  <input type="text" name="title" autocomplete="off" placeholder="请输入标题" class="kimui-input">
+			</div>
+		  </div>
+		  <div class="kimui-form-item">
+			<label class="kimui-form-label">短输入框</label>
+			<div class="kimui-input-inline">
+			  <input type="text" name="username" vilidate="required" placeholder="请输入" autocomplete="off" class="kimui-input">
+			</div>
+		  </div>
+		  
+		  <div class="kimui-form-item">
+			<div class="kimui-inline">
+			  <label class="kimui-form-label">日期选择</label>
+			  <div class="kimui-input-block">
+				<input type="text" name="date" id="date" autocomplete="off" class="kimui-input" >
+			  </div>
+			</div>
+			<div class="kimui-inline">
+			  <label class="kimui-form-label">行内表单</label>
+			  <div class="kimui-input-inline">
+				<input type="number" name="number" autocomplete="off" class="kimui-input">
+			  </div>
+			</div>
+		  </div>
+		  <div class="kimui-form-item">
+			<label class="kimui-form-label">密码</label>
+			<div class="kimui-input-inline">
+			  <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="kimui-input">
+			</div>
+			<div class="kimui-form-mid kimui-word-aux">请务必填写用户名</div>
+		  </div>
+		  
+		  <div class="kimui-form-item">
+			<div class="kimui-inline">
+			  <label class="kimui-form-label">范围</label>
+			  <div class="kimui-input-inline" style="width: 100px;">
+				<input type="text" name="price_min" placeholder="￥" autocomplete="off" class="kimui-input">
+			  </div>
+			  <div class="kimui-form-mid">-</div>
+			  <div class="kimui-input-inline" style="width: 100px;">
+				<input type="text" name="price_max" placeholder="￥" autocomplete="off" class="kimui-input">
+			  </div>
+			</div>
+		  </div>
+		  
+		  <div class="kimui-form-item">
+			<label class="kimui-form-label">单行选择框</label>
+			<div class="kimui-input-block">
+			  <select name="interest" lay-filter="aihao">
+				<option value=""></option>
+				<option value="0">写作</option>
+				<option value="1" selected="">阅读</option>
+				<option value="2">游戏</option>
+				<option value="3">音乐</option>
+				<option value="4">旅行</option>
+			  </select>
+			</div>
+		  </div>
+		  
+		  <div class="kimui-form-item">
+			<label class="kimui-form-label">行内选择框</label>
+			<div class="kimui-input-inline">
+			  <select name="quiz1">
+				<option value="">请选择省</option>
+				<option value="浙江" selected="">浙江省</option>
+				<option value="你的工号">江西省</option>
+				<option value="你最喜欢的老师">福建省</option>
+			  </select>
+			</div>
+			<div class="kimui-input-inline">
+			  <select name="quiz2">
+				<option value="">请选择市</option>
+				<option value="杭州">杭州</option>
+				<option value="宁波" disabled="">宁波</option>
+				<option value="温州">温州</option>
+				<option value="温州">台州</option>
+				<option value="温州">绍兴</option>
+			  </select>
+			</div>
+			<div class="kimui-input-inline">
+			  <select name="quiz3">
+				<option value="">请选择县/区</option>
+				<option value="西湖区">西湖区</option>
+				<option value="余杭区">余杭区</option>
+				<option value="拱墅区">临安市</option>
+			  </select>
+			</div>
+		  </div>
+		  <div class="kimui-form-item" pane="">
+			<label class="kimui-form-label">开关-开</label>
+			<div class="kimui-input-block">
+			  <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" title="开关">
+			</div>
+		  </div>
+		  <div class="kimui-form-item" pane="">
+			<label class="kimui-form-label">单选框</label>
+			<div class="kimui-input-block">
+			  <input type="radio" name="sex" value="男" title="男" checked="">
+			  <input type="radio" name="sex" value="女" title="女">
+			  <input type="radio" name="sex" value="禁" title="禁用" disabled="">
+			</div>
+		  </div>
+		  <div class="kimui-form-item kimui-form-text">
+			<label class="kimui-form-label">文本域</label>
+			<div class="kimui-input-block">
+			  <textarea placeholder="请输入内容" class="kimui-textarea"></textarea>
+			</div>
+		  </div>
+		  <div class="kimui-form-item">
+			<button class="kimui-btn kimui-btn-info" lay-submit="" lay-filter="demo2">跳转式提交</button>
+		  </div>
+		</form>
+	 </div>
+	 <!-- 引入工具包 -->
+	 <script type="text/javascript" src="../util/jquery-3.0.0.min.js"></script>	
+	 <script type="text/javascript" src="../vilidate/vilidate.min.js"></script>	
+	 <script>
+		function checkLen(){
+			alert(1)
+		}
+		
+	 </script>
+ </body>
+</html>

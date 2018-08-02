@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>树控件demo</title>
+  <style type="text/css">
+	*{padding:0;margin:0;}
+	body{family:"微软雅黑";font-size:12px;}
+	a{text-decoration:none;}
+	ul,ol li{list-style:none;} 
+	
+ </style>
+ <!-- <link href="../tree/tree.css" rel="stylesheet" type="text/css" /> -->
+ </head>
+ <body>
+	 <div id="treeBox" style="width:400px;margin:100px auto;"></div>
+	 <!-- 引入工具包 -->
+	 <script type="text/javascript" src="../util/jquery-3.0.0.min.js"></script>	
+	 <script type="text/javascript" src="../tree/tree.js"></script>	
+	 <script>
+		//搜索框
+		$("#treeBox").kimTree({
+			root: [{
+                name: "一级节点1",
+                url: "",
+                opid: 1,
+                pid: "root1",
+                mark: "focus",
+                label: "limit"
+            }, {
+                name: "一级节点2",
+                url: "",
+                opid: 2,
+				mark: "focus",
+				label: "limit",
+                pid: "root2"
+            }, {
+                name: "一级节点3",
+                url: "",
+                opid: 3,
+				mark: "disable",
+				label: "limit",
+                pid: "root3"
+            }, {
+                name: "一级节点4",
+                url: "",
+                opid: 4,
+				label: "limit",
+                pid: "root4"
+            }, {
+                name: "一级节点5",
+                url: "",
+                opid: 5,
+				label: "limit",
+                pid: "root5"
+            }, {
+                name: "一级节点6",
+                url: "",
+                opid: 6,
+                pid: "root6"
+            }],
+            children: {
+                root1: [{
+                    name: "二级节点11",
+                    url: "javascript:void(0);",
+                    opid: 11,
+                    pid: "c11",
+                    label: "limit"
+                }, {
+                    name: "二级节点12",
+                    url: "javascript:void(0);",
+                    opid: 12,
+                    pid: "c12",
+                    mark: "check"
+                }, {
+                    name: "二级节点13",
+                    url: "javascript:void(0);",
+                    opid: 13,
+                    pid: "c13",
+                    mark: "check"
+                }],
+                root2: [{
+                    name: "二级节点21",
+                    url: "javascript:void(0);",
+                    opid: 21,
+                    pid: "c21",
+                    mark: "check"
+                }, {
+                    name: "二级节点22",
+                    url: "javascript:void(0);",
+                    opid: 22,
+                    pid: "c22"
+                }, {
+                    name: "二级节点23",
+                    url: "javascript:void(0);",
+                    opid: 23,
+                    pid: "c23"
+                }],
+                root3: [{
+                    name: "二级节点31",
+                    url: "javascript:void(0);",
+                    opid: 31,
+                    pid: "c31"
+                }, {
+                    name: "二级节点32",
+                    url: "javascript:void(0);",
+                    opid: 32,
+                    pid: "c32"
+                }, {
+                    name: "二级节点33",
+                    url: "javascript:void(0);",
+                    opid: 33,
+                    pid: "c33"
+                }],
+                root4: [{
+                    name: "二级节点41",
+                    url: "javascript:void(0);",
+                    opid: 41,
+                    pid: "c41"
+                }, {
+                    name: "二级节点42",
+                    url: "javascript:void(0);",
+                    opid: 42,
+                    pid: "c42"
+                }, {
+                    name: "二级节点43",
+                    url: "javascript:void(0);",
+                    opid: 43,
+                    pid: "c43"
+                }],
+                c41: [{
+                    name: "三级节点41",
+                    url: "javascript:void(0);",
+                    opid: 411,
+                    pid: "c411"
+                }, {
+                    name: "三级节点42",
+                    url: "javascript:void(0);",
+                    opid: 412,
+                    pid: "c412"
+                }, {
+                    name: "三级节点43",
+                    url: "javascript:void(0);",
+                    opid: 413,
+                    pid: "c413"
+                }]
+            },
+            showSearch: true, //是否显示搜索框
+            searchMethod: "js",//搜索方法
+			searchedColor: "red",//搜索到的数据的显示颜色，支持十六进制
+			noDataText: "无匹配数据",//搜索不到数据时的提示信息
+            exclusion: true,//节点展开是否互斥
+            expand: false,//是否显示展开和收起
+            expandCount: 0,//默认展开第几个节点
+            showClose: false,//是否显示关闭按钮
+			icons: false,//显示图标
+            iconFolder: false,//显示文件夹图标
+            iconFile: false,//显示文件图标
+            line: true,//显示对齐线
+            left: 0,//下拉框的left位置
+            top: 0,//下拉框的top位置
+            width: "100%",//宽度
+            height: "250",//高度
+            initId: '',//初始化数据id
+            isRadio: false,//单选
+			type: "checkbox",//数据显示类型checkbox\radio
+            limit: true,//启用个数限制
+			limitTimes: "2", //限制选中的个数，父节点必须有limit标识
+            markParent: false,//标识父节点
+            childrenSelected: false,//子节点选中
+            parentSelected: false,//父节点选中
+			onlyClickCheckbox: false,//只点击复选框选中
+            border : "1px solid #ddd",//给外边框加线
+			onclick : function($obj,data) {//触发点击事件以后回调返回的函数
+				var checkName = $.trim(data.checkArr.name);
+				var checkId = $.trim(data.checkArr.opid);
+				alert(checkName + "--" + checkId)
+			} //下拉框为树类型的树初始化
+		});
+	 </script>
+ </body>
+</html>

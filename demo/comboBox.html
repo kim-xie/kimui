@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>下拉框demo</title>
+  <style type="text/css">
+	*{padding:0;margin:0;}
+	body{family:"微软雅黑";font-size:12px;}
+	a{text-decoration:none;}
+	ul,ol li{list-style:none;} 
+	
+ </style>
+ </head>
+ <body>
+	 <div id="searchBox" style="width:400px;margin:200px auto;"></div>
+	 <!-- 引入工具包  如果要形成下拉框树还需引入树控件 -->
+	 <script type="text/javascript" src="../util/jquery-3.0.0.min.js"></script>	
+	 <script type="text/javascript" src="../comboBox/comboBox.js"></script>	
+	 <script>
+		//搜索框
+		$("#searchBox").kimComboBox({
+			width:"100%",//展示框的宽度
+			height:"30px",//展示框的高度
+			validateId:false,//是否需要验证Id
+			validateVal:false,//是否需要验证Val
+			validateIdType:"required",//验证类型 (默认为非空验证-required)- email/phone/chinese/idcard
+			validateValType:"required",//验证类型 (默认为非空验证-required)- email/phone/chinese/idcard
+			addIdsObj:"",//存放增量ID的Dom对象
+			removeIdsObj:"",//存放删除ID的Dom对象
+			idObj:"testId",//存放ID的Dom对象
+			inputName: "inputName",//输入框的name值
+			idValue:"",//存放的ID值
+			textId:"contents",//显示文本框的id
+			textValue:"请选择",//展示框的显示值
+			listId:"kimComboBoxList",//下拉框的ID属性
+			listClass:"kimComboBoxList",//下拉框的class属性
+			listWidth:"100%",//下拉框的宽度
+			listHeight:"200px",//下拉框的高度
+			listBackground:"#fff",//下拉框的背景色
+			listBorder:"1px solid #bfcbd9",//下拉框的边框
+			showSearch:true,//是否显示搜索框
+			searchBoxWidth:"200px",//搜索框的宽度
+			listType:"list",//下拉框的类型
+			useFindIdByText: false,//根据文本找对应的ID
+			useFindTextById: false,//根据ID找对应的文本
+			useFindTextByIds: false,//根据多选的ID找到对应的多文本
+			showClearButton: true,//是否显示重置按钮
+			listids:["1111","2222","3333"],//下拉框里的值对应的id
+			listcontents:["下拉框测试1","list下拉框测试2","list下拉框测试3"],//下拉框里的值（针对下拉框为list类型的值）
+			showCheckBox:true,//是否显示复选框
+			onlyClickCheckBox: false, //是否只能点击checkBox选择数据
+			isMultiSelect:false,//是否支持多选
+			triggerClick:true,//下拉框里的数据是否可选择
+			disable: false,//下拉框是否禁止点击
+			onchange:function(obj,ids,values){},//值变化事件
+			tree:{}//下拉框为树类型的树初始化
+		});
+	 </script>
+ </body>
+</html>

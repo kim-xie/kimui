@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>换肤demo</title>
+
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	.skin-blue{background:#40beed}
+	.skin-purple{background:#605ca8}
+	.skin-black-light{background:#ffffff}
+	.skin-green{background:#00a65a}
+	.skin-yellow-light{background:#f39c12}
+	.skin-red-light{background:#dd4b39}
+ </style>
+ </head>
+ <body class="skin-blue">
+	 <!-- 输入框 -->
+	 <div style="margin:60px auto;text-align:center;">
+		  <h3>换肤demo</h3><br/>
+		  <a href="javascript:openSkin()">点我展开换肤层</a>
+		  <div id="kimSkin"></div>
+	 </div>
+
+	 <!-- 引入工具包 -->
+	 <script type="text/javascript" src="../util/jquery-3.0.0.min.js"></script>	
+	 <script type="text/javascript" src="../skin/skin.js"></script>	
+	 <script>
+		$("#kimSkin").kimSkin({
+			skinPosition: 'bottom', //弹出层出现的位置 top/bottom
+			backgroundImg: false, //背景是否为图片，如果为false则skinLi中的src不生效
+			classPrefix: "skin-", //默认class前缀
+			skinLi: [
+				{title: '蓝色风格', src: '', colorClass: 'blue', background: '#40beed'},	
+				{title: '紫色风格', src: '', colorClass: 'purple', background: '#605ca8'},	
+				{title: '白色风格', src: '', colorClass: 'black-light', background: '#ffffff'},	
+				{title: '绿色风格', src: '', colorClass: 'green', background: '#00a65a'},	
+				{title: '黄色风格', src: '', colorClass: 'yellow-light', background: '#f39c12'},
+				{title: '红色风格', src: '', colorClass: 'red-light', background: '#dd4b39'},
+			],
+			callback: function(className){ //回调函数
+				alert(className)
+			}
+		});
+
+		function openSkin(){
+			if($("#skinWrap").css("display") === "block"){
+				$("#skinWrap").slideUp();
+				$("#skinWrap .closeBtn").fadeOut(1);
+			}else{
+				$("#skinWrap").slideDown();
+				$("#skinWrap .closeBtn").fadeIn(1000);
+			}
+		}
+	 </script>
+ </body>
+</html>

@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>下拉框demo</title>
+  <style type="text/css">
+	*{padding:0;margin:0;}
+	body{family:"微软雅黑";font-size:12px;}
+	a{text-decoration:none;}
+	ul,ol li{list-style:none;} 
+	
+ </style>
+ </head>
+ <body>
+	 <div id="searchBox" style="width:400px;margin:200px auto;"></div>
+	 <!-- 引入工具包  如果要形成下拉框树还需引入树控件 -->
+	 <script type="text/javascript" src="../util/jquery-3.0.0.min.js"></script>	
+	 <script type="text/javascript" src="../comboBox/comboBox.min.js"></script>	
+	 <script type="text/javascript" src="../tree/tree.js"></script>	
+	 <script>
+		var rootData = [{
+					name: "一级节点1",
+					url: "",
+					opid: 1,
+					pid: "root1",
+					mark: "focus",
+					label: "limit"
+				}, {
+					name: "一级节点2",
+					url: "",
+					opid: 2,
+					mark: "focus",
+					label: "limit",
+					pid: "root2"
+				}, {
+					name: "一级节点3",
+					url: "",
+					opid: 3,
+					mark: "disable",
+					label: "limit",
+					pid: "root3"
+				}, {
+					name: "一级节点4",
+					url: "",
+					opid: 4,
+					label: "limit",
+					pid: "root4"
+				}, {
+					name: "一级节点5",
+					url: "",
+					opid: 5,
+					label: "limit",
+					pid: "root5"
+				}, {
+					name: "一级节点6",
+					url: "",
+					opid: 6,
+					pid: "root6"
+				}];
+
+		var childrenData = {
+					root1: [{
+						name: "二级节点11",
+						url: "javascript:void(0);",
+						opid: 11,
+						pid: "c11",
+						label: "limit"
+					}, {
+						name: "二级节点12",
+						url: "javascript:void(0);",
+						opid: 12,
+						pid: "c12",
+						mark: "check"
+					}, {
+						name: "二级节点13",
+						url: "javascript:void(0);",
+						opid: 13,
+						pid: "c13",
+						mark: "check"
+					}],
+					root2: [{
+						name: "二级节点21",
+						url: "javascript:void(0);",
+						opid: 21,
+						pid: "c21",
+						mark: "check"
+					}, {
+						name: "二级节点22",
+						url: "javascript:void(0);",
+						opid: 22,
+						pid: "c22"
+					}, {
+						name: "二级节点23",
+						url: "javascript:void(0);",
+						opid: 23,
+						pid: "c23"
+					}],
+					root3: [{
+						name: "二级节点31",
+						url: "javascript:void(0);",
+						opid: 31,
+						pid: "c31"
+					}, {
+						name: "二级节点32",
+						url: "javascript:void(0);",
+						opid: 32,
+						pid: "c32"
+					}, {
+						name: "二级节点33",
+						url: "javascript:void(0);",
+						opid: 33,
+						pid: "c33"
+					}],
+					root4: [{
+						name: "二级节点41",
+						url: "javascript:void(0);",
+						opid: 41,
+						pid: "c41"
+					}, {
+						name: "二级节点42",
+						url: "javascript:void(0);",
+						opid: 42,
+						pid: "c42"
+					}, {
+						name: "二级节点43",
+						url: "javascript:void(0);",
+						opid: 43,
+						pid: "c43"
+					}],
+					c41: [{
+						name: "三级节点41",
+						url: "javascript:void(0);",
+						opid: 411,
+						pid: "c411"
+					}, {
+						name: "三级节点42",
+						url: "javascript:void(0);",
+						opid: 412,
+						pid: "c412"
+					}, {
+						name: "三级节点43",
+						url: "javascript:void(0);",
+						opid: 413,
+						pid: "c413"
+					}]
+				};
+
+		$("#searchBox").kimComboBox({
+			width:"100%",//展示框的宽度
+			height:"30px",//展示框的高度
+			validateId:false,//是否需要验证Id
+			validateVal:false,//是否需要验证Val
+			validateIdType:"required",//验证类型 (默认为非空验证-required)- email/phone/chinese/idcard
+			validateValType:"required",//验证类型 (默认为非空验证-required)- email/phone/chinese/idcard
+			addIdsObj:"",//存放增量ID的Dom对象
+			removeIdsObj:"",//存放删除ID的Dom对象
+			idObj:"testId",//存放ID的Dom对象
+			inputName: "inputName",//输入框的name值
+			idValue:"",//存放的ID值
+			textId:"contents",//显示文本框的id
+			textValue:"请选择",//展示框的显示值
+			listId:"kimComboBoxList",//下拉框的ID属性
+			listClass:"kimComboBoxList",//下拉框的class属性
+			listWidth:"100%",//下拉框的宽度
+			listHeight:"200px",//下拉框的高度
+			listBackground:"#fff",//下拉框的背景色
+			listBorder:"1px solid #bfcbd9",//下拉框的边框
+			showSearch:true,//是否显示搜索框
+			searchedColor: "red",//搜索匹配到的数据颜色
+			noDataText: "无匹配数据",//搜索不到数据时的提示信息
+			searchBoxWidth:"200px",//搜索框的宽度
+			useFindIdByText: false,//根据文本找对应的ID
+			useFindTextById: false,//根据ID找对应的文本
+			useFindTextByIds: false,//根据多选的ID找到对应的多文本
+			showClearButton: true,//是否显示重置按钮
+			listids:["1111","2222","3333"],//下拉框里的值对应的id
+			listcontents:["下拉框测试1","list下拉框测试2","list下拉框测试3"],//下拉框里的值（针对下拉框为list类型的值）
+			isMultiSelect:true,//是否支持多选
+			triggerClick:true,//下拉框里的数据是否可选择
+			disable: false,//下拉框是否禁止点击
+			onchange:function(obj,ids,values){},//值变化事件
+			listType:"list",//下拉框的类型 -- 若为tree则与上面的配置无关
+			tree:{//下拉框为树类型的树初始化 --- 下拉框必须为树类型时才生效
+				root: rootData,
+				children: childrenData,
+				showSearch: true, //是否显示搜索框
+				searchMethod: "js",//搜索方法
+				searchedColor: "red",//搜索到的数据的显示颜色，支持十六进制
+				noDataText: "无匹配数据",//搜索不到数据时的提示信息
+				exclusion: true,//节点展开是否互斥
+				expand: false,//是否显示展开和收起
+				expandCount: 0,//默认展开第几个节点
+				showClose: false,//是否显示关闭按钮
+				icons: false,//显示图标
+				iconFolder: false,//显示文件夹图标
+				iconFile: false,//显示文件图标
+				line: true,//显示对齐线
+				left: 0,//下拉框的left位置
+				top: 0,//下拉框的top位置
+				width: "100%",//宽度
+				height: "250",//高度
+				initId: '',//初始化数据id
+				isRadio: false,//单选
+				type: "checkbox",//数据显示类型checkbox\radio
+				limit: true,//启用个数限制
+				limitTimes: "2", //限制选中的个数，父节点必须有limit标识
+				markParent: false,//标识父节点
+				childrenSelected: false,//子节点选中
+				parentSelected: false,//父节点选中
+				onlyClickCheckbox: false,//只点击复选框选中
+				border : "1px solid #ddd",//给外边框加线
+				onclick : function($obj,data) {//触发点击事件以后回调返回的函数
+					var checkName = $.trim(data.checkArr.name);
+					var checkId = $.trim(data.checkArr.opid);
+					$("#contents").text(checkName).attr("title",checkName).css("color","#1f2d3d");
+					$("#testId").text(checkId);
+					//alert(checkName + "--" + checkId)
+				}
+			}
+		});
+	 </script>
+ </body>
+</html>

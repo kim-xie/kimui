@@ -1,0 +1,151 @@
+@charset "utf-8";
+@import url("/icomoon/style.css")
+*{margin:0;padding:0;}
+span[class^="kimicon-"], [class*=" kimicon-"] {
+	font-size:20px;
+ }
+.kimicon-check-circle {
+	color:#15f715;
+}
+.kimicon-chevron-left2, .kimicon-chevron-right2{
+	font-size:34px;
+	color:#fff;
+}
+.kimicon-x{
+	color:#c8c8cc;
+}
+.kimicon-x:hover{
+	color:red;
+}
+#skinWrap{
+	 width: 100%;
+	 height: 240px;
+	 background: rgba(0,0,0,0.4);
+	 margin: 0 auto;
+	 overflow: hidden;
+	 display: none; 
+	 position: fixed;
+	 z-index: 1993;
+}
+
+#skinWrap .skinbox{
+	 width: 1200px;
+	 position: relative;
+	 margin: 0 auto;
+	 overflow: hidden;
+}
+
+#skinWrap .skinbox .arrow{
+	position:absolute;
+	text-align:center;
+	cursor:pointer;
+	width: 40px;
+	height: 55px;
+	line-height:55px;
+	border-radius:5px;
+	font-size:34px;
+	background:rgba(0,0,0,0);
+}
+
+#skinWrap .skinbox .prev{
+	left:120px;
+	top:90px;
+}
+#skinWrap .skinbox .next{
+	right:120px;
+	top:90px;
+}
+#skinWrap .skinbox:hover .next{
+	background:rgba(0,0,0,0.5);
+}
+#skinWrap .skinbox:hover .prev{
+	background:rgba(0,0,0,0.5);
+}
+#skinWrap .skinbox .contains{
+	margin: 60px auto;
+	overflow: hidden;
+	position: relative;
+	width: 830px;
+	height: 120px;
+}
+#skinWrap .skinbox .contains ul{
+	position:absolute;
+	left:-840px;
+	top:0;
+	height: 120px;
+	padding: 0;
+	margin: 0;
+}
+
+#skinWrap .skinbox ul li{
+	width:200px;
+	height:120px;
+	margin-right:10px;
+	float:left;
+	list-style: none;
+	cursor:pointer;
+	position:relative;
+}
+#skinWrap .skinbox ul li:last-child{margin-right:0;}
+#skinWrap .skinbox ul li:hover{
+	background:rgba(0,0,0,0.4);
+}
+#skinWrap .skinbox ul li .skinLi{
+	width:200px;
+	height:120px;
+}
+#skinWrap .skinbox ul li span{
+	position:absolute;
+	right:6px;
+	bottom:6px;
+	display:none;
+	width:18px;
+	height:18px;
+}
+#skinWrap .skinbox ul li .overlay{
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background: rgba(0,0,0,0.4);
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	outline: none;
+	opacity: 0;
+	filter: alpha(opacity=0) \9;
+	color: #fff;
+	transition: opacity 500ms;
+	-moz-transition: opacity 500ms;
+	-o-transition: opacity 500ms;
+	-webkit-transition: opacity 500ms;
+}
+#skinWrap .skinbox ul li .overlay h5{
+	color: #fff;
+	margin:0;
+	line-height:120px;
+	text-align:center;
+}
+#skinWrap .skinbox ul li:hover .overlay{
+	 opacity: 1;
+	filter: alpha(opacity=100) \9;
+	transition: opacity 100ms;
+	-moz-transition: opacity 100ms;
+	-o-transition: opacity 100ms;
+	-webkit-transition: opacity 100ms
+}
+#skinWrap .closeBtn{
+	width: 36px;
+	height:36px;
+	text-align: center;
+	cursor:pointer;
+	position: fixed;
+	right: 12px;
+	font-size:34px;
+	color:#c8c8cc;
+}
+#skinWrap .closeBtn:hover{
+	color: red;
+}

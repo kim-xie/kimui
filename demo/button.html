@@ -1,0 +1,509 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>按钮demo</title>
+  <link href="../util/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+.kimui-btn {
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #bfcbd9;
+    border-color: #c4c4c4;
+    color: #1f2d3d;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 4px
+}
+
+.kimui-btn+.kimui-btn {
+    margin-left: 10px
+}
+
+.kimui-btn:focus,.kimui-btn:hover {
+    color: #20a0ff;
+    border-color: #20a0ff
+}
+
+.kimui-btn:active {
+    color: #1d90e6;
+    border-color: #1d90e6;
+    outline: none
+}
+
+.kimui-btn::-moz-focus-inner {
+    border: 0
+}
+
+.kimui-btn i.mr5 {
+    margin-right: 5px
+}
+
+.kimui-btn.is-loading {
+    position: relative;
+    pointer-events: none
+}
+
+.kimui-btn.is-loading:before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: inherit;
+    background-color: hsla(0,0%,100%,.35)
+}
+
+.kimui-btn.is-disabled,.kimui-btn.is-disabled:focus,.kimui-btn.is-disabled:hover {
+    color: #bfcbd9;
+    cursor: not-allowed;
+    background-image: none;
+    background-color: #eef1f6;
+    border-color: #d1dbe5
+}
+
+.kimui-btn.is-disabled.kimui-btn-text {
+    background-color: transparent
+}
+
+.kimui-btn.is-disabled.is-plain,.kimui-btn.is-disabled.is-plain:focus,.kimui-btn.is-disabled.is-plain:hover {
+    background-color: #fff;
+    border-color: #d1dbe5;
+    color: #bfcbd9
+}
+
+.kimui-btn.is-active {
+    color: #1d90e6;
+    border-color: #1d90e6
+}
+
+.kimui-btn.is-plain:focus,.kimui-btn.is-plain:hover {
+    background: #fff;
+    border-color: #20a0ff;
+    color: #20a0ff
+}
+
+.kimui-btn.is-plain:active {
+    background: #fff;
+    border-color: #1d90e6;
+    color: #1d90e6;
+    outline: none
+}
+
+.kimui-btn-primary {
+    color: #fff;
+    background-color: #20a0ff;
+    border-color: #20a0ff
+}
+
+.kimui-btn-primary:focus,.kimui-btn-primary:hover {
+    background: #4db3ff;
+    border-color: #4db3ff;
+    color: #fff
+}
+
+.kimui-btn-primary:active {
+    outline: none
+}
+
+.kimui-btn-primary.is-active,.kimui-btn-primary:active {
+    background: #1d90e6;
+    border-color: #1d90e6;
+    color: #fff
+}
+
+.kimui-btn-primary.is-plain {
+    background: #fff;
+    border: 1px solid #bfcbd9;
+    color: #1f2d3d
+}
+
+.kimui-btn-primary.is-plain:focus,.kimui-btn-primary.is-plain:hover {
+    background: #fff;
+    border-color: #20a0ff;
+    color: #20a0ff
+}
+
+.kimui-btn-primary.is-plain:active {
+    background: #fff;
+    border-color: #1d90e6;
+    color: #1d90e6;
+    outline: none
+}
+
+.kimui-btn-success {
+    color: #fff;
+    background-color: #13ce66;
+    border-color: #13ce66
+}
+
+.kimui-btn-success:focus,.kimui-btn-success:hover {
+    background: #42d885;
+    border-color: #42d885;
+    color: #fff
+}
+
+.kimui-btn-success:active {
+    outline: none
+}
+
+.kimui-btn-success.is-active,.kimui-btn-success:active {
+    background: #11b95c;
+    border-color: #11b95c;
+    color: #fff
+}
+
+.kimui-btn-success.is-plain {
+    background: #fff;
+    border: 1px solid #bfcbd9;
+    color: #1f2d3d
+}
+
+.kimui-btn-success.is-plain:focus,.kimui-btn-success.is-plain:hover {
+    background: #fff;
+    border-color: #13ce66;
+    color: #13ce66
+}
+
+.kimui-btn-success.is-plain:active {
+    background: #fff;
+    border-color: #11b95c;
+    color: #11b95c;
+    outline: none
+}
+
+.kimui-btn-warn {
+    color: #fff;
+    background-color: #f7ba2a;
+    border-color: #f7ba2a
+}
+
+.kimui-btn-warn:focus,.kimui-btn-warn:hover {
+    background: #f9c855;
+    border-color: #f9c855;
+    color: #fff
+}
+
+.kimui-btn-warn:active {
+    outline: none
+}
+
+.kimui-btn-warn.is-active,.kimui-btn-warn:active {
+    background: #dea726;
+    border-color: #dea726;
+    color: #fff
+}
+
+.kimui-btn-warn.is-plain {
+    background: #fff;
+    border: 1px solid #bfcbd9;
+    color: #1f2d3d
+}
+
+.kimui-btn-warn.is-plain:focus,.kimui-btn-warn.is-plain:hover {
+    background: #fff;
+    border-color: #f7ba2a;
+    color: #f7ba2a
+}
+
+.kimui-btn-warn.is-plain:active {
+    background: #fff;
+    border-color: #dea726;
+    color: #dea726;
+    outline: none
+}
+
+.kimui-btn-danger {
+    color: #fff;
+    background-color: #ff4949;
+    border-color: #ff4949
+}
+
+.kimui-btn-danger:focus,.kimui-btn-danger:hover {
+    background: #ff6d6d;
+    border-color: #ff6d6d;
+    color: #fff
+}
+
+.kimui-btn-danger:active {
+    outline: none
+}
+
+.kimui-btn-danger.is-active,.kimui-btn-danger:active {
+    background: #e64242;
+    border-color: #e64242;
+    color: #fff
+}
+
+.kimui-btn-danger.is-plain {
+    background: #fff;
+    border: 1px solid #bfcbd9;
+    color: #1f2d3d
+}
+
+.kimui-btn-danger.is-plain:focus,.kimui-btn-danger.is-plain:hover {
+    background: #fff;
+    border-color: #ff4949;
+    color: #ff4949
+}
+
+.kimui-btn-danger.is-plain:active {
+    background: #fff;
+    border-color: #e64242;
+    color: #e64242;
+    outline: none
+}
+
+.kimui-btn-info {
+    color: #fff;
+    background-color: #50bfff;
+    border-color: #50bfff
+}
+
+.kimui-btn-info:focus,.kimui-btn-info:hover {
+    background: #73ccff;
+    border-color: #73ccff;
+    color: #fff
+}
+
+.kimui-btn-info:active {
+    outline: none
+}
+
+.kimui-btn-info.is-active,.kimui-btn-info:active {
+    background: #48ace6;
+    border-color: #48ace6;
+    color: #fff
+}
+
+.kimui-btn-info.is-plain {
+    background: #fff;
+    border: 1px solid #bfcbd9;
+    color: #1f2d3d
+}
+
+.kimui-btn-info.is-plain:focus,.kimui-btn-info.is-plain:hover {
+    background: #fff;
+    border-color: #50bfff;
+    color: #50bfff
+}
+
+.kimui-btn-info.is-plain:active {
+    background: #fff;
+    border-color: #48ace6;
+    color: #48ace6;
+    outline: none
+}
+
+.kimui-btn-large {
+    padding: 11px 19px;
+    font-size: 16px;
+    border-radius: 4px
+}
+
+.kimui-btn-small {
+    padding: 7px 9px;
+    font-size: 12px;
+    border-radius: 4px
+}
+
+.kimui-btn-small i {
+    font-size: 16px!important
+}
+
+.kimui-btn-mini {
+    padding: 4px;
+    font-size: 12px;
+    border-radius: 4px
+}
+
+.kimui-btn-mini i {
+    font-size: 14px!important
+}
+
+.kimui-btn-group {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.kimui-btn-group .kimui-btn-primary:first-child {
+    border-right-color: hsla(0,0%,100%,.5)
+}
+
+.kimui-btn-group .kimui-btn-primary:last-child {
+    border-left-color: hsla(0,0%,100%,.5)
+}
+
+.kimui-btn-group .kimui-btn-primary:not(:first-child):not(:last-child) {
+    border-left-color: hsla(0,0%,100%,.5);
+    border-right-color: hsla(0,0%,100%,.5)
+}
+
+.kimui-btn-group .kimui-btn-success:first-child {
+    border-right-color: hsla(0,0%,100%,.5)
+}
+
+.kimui-btn-group .kimui-btn-success:last-child {
+    border-left-color: hsla(0,0%,100%,.5)
+}
+
+.kimui-btn-group .kimui-btn-success:not(:first-child):not(:last-child) {
+    border-left-color: hsla(0,0%,100%,.5);
+    border-right-color: hsla(0,0%,100%,.5)
+}
+
+.kimui-btn-group .kimui-btn-warn:first-child {
+    border-right-color: hsla(0,0%,100%,.5)
+}
+
+.kimui-btn-group .kimui-btn-warn:last-child {
+    border-left-color: hsla(0,0%,100%,.5)
+}
+
+.kimui-btn-group .kimui-btn-warn:not(:first-child):not(:last-child) {
+    border-left-color: hsla(0,0%,100%,.5);
+    border-right-color: hsla(0,0%,100%,.5)
+}
+
+.kimui-btn-group .kimui-btn-danger:first-child {
+    border-right-color: hsla(0,0%,100%,.5)
+}
+
+.kimui-btn-group .kimui-btn-danger:last-child {
+    border-left-color: hsla(0,0%,100%,.5)
+}
+
+.kimui-btn-group .kimui-btn-danger:not(:first-child):not(:last-child) {
+    border-left-color: hsla(0,0%,100%,.5);
+    border-right-color: hsla(0,0%,100%,.5)
+}
+
+.kimui-btn-group .kimui-btn-info:first-child {
+    border-right-color: hsla(0,0%,100%,.5)
+}
+
+.kimui-btn-group .kimui-btn-info:last-child {
+    border-left-color: hsla(0,0%,100%,.5)
+}
+
+.kimui-btn-group .kimui-btn-info:not(:first-child):not(:last-child) {
+    border-left-color: hsla(0,0%,100%,.5);
+    border-right-color: hsla(0,0%,100%,.5)
+}
+
+.kimui-btn-group .kimui-btn {
+    float: left;
+    position: relative
+}
+
+.kimui-btn-group .kimui-btn+.kimui-btn {
+    margin-left: 0
+}
+
+.kimui-btn-group .kimui-btn:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0
+}
+
+.kimui-btn-group .kimui-btn:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0
+}
+
+.kimui-btn-group .kimui-btn:not(:first-child):not(:last-child) {
+    border-radius: 0
+}
+
+.kimui-btn-group .kimui-btn:not(:last-child) {
+    margin-right: -1px
+}
+
+.kimui-btn-group .kimui-btn.is-active,.kimui-btn-group .kimui-btn:active,.kimui-btn-group .kimui-btn:focus,.kimui-btn-group .kimui-btn:hover {
+    z-index: 1
+}
+
+ </style>
+ </head>
+ <body>
+	 <!-- 带背景按钮 -->
+	 <div style="width:80%;margin:60px auto;text-align:center;">
+		  <h3>带背景按钮</h3><br/>
+		  <button class="kimui-btn kimui-btn-default">default</button>
+		  <button class="kimui-btn kimui-btn-primary">primary</button>
+		  <button class="kimui-btn kimui-btn-success">success</button>
+		  <button class="kimui-btn kimui-btn-info">info</button>
+		  <button class="kimui-btn kimui-btn-warn">warn</button>
+		  <button class="kimui-btn kimui-btn-danger">danger</button>
+		  <button class="kimui-btn is-disabled">disabled</button>
+	 </div>
+
+	 <!-- 鼠标移入按钮效果 -->
+	 <div style="width:80%;margin:60px auto;text-align:center;">
+		  <h3>鼠标移入按钮效果</h3><br/>
+		  <button class="kimui-btn kimui-btn-default is-plain">default</button>
+		  <button class="kimui-btn kimui-btn-primary is-plain">primary</button>
+		  <button class="kimui-btn kimui-btn-success is-plain">success</button>
+		  <button class="kimui-btn kimui-btn-info is-plain">info</button>
+		  <button class="kimui-btn kimui-btn-warn is-plain">warn</button>
+		  <button class="kimui-btn kimui-btn-danger is-plain">danger</button>
+		  <button class="kimui-btn is-disabled is-plain">disabled</button>
+	 </div>
+
+	 <!-- 图标按钮 -->
+	 <div style="width:80%;margin:60px auto;text-align:center;">
+		  <h3>图标按钮</h3><br/>
+		  <button class="kimui-btn kimui-btn-primary is-loading"><i class="icon-spinner icon-spin"></i> loading</button>
+		  <button class="kimui-btn kimui-btn-primary "><i class="icon-edit"></i></button>
+		  <button class="kimui-btn kimui-btn-primary "><i class="icon-pencil"></i> primary</button>
+		  <button class="kimui-btn kimui-btn-success "><i class="icon-ok-circle"></i> success</button>
+		  <button class="kimui-btn kimui-btn-info "><i class="icon-info-sign"></i> info</button>
+		  <button class="kimui-btn kimui-btn-warn "><i class="icon-warning-sign"></i> warn</button>
+		  <button class="kimui-btn kimui-btn-danger "><i class="icon-minus-sign"></i> danger</button>
+		  <button class="kimui-btn is-disabled "><i class="icon-ban-circle"></i> disabled</button>
+	 </div>
+
+	 <!-- 按钮组 -->
+	 <div style="width:80%;margin:60px auto;text-align:center;">
+		  <h3>按钮组</h3><br/>
+		  <div class="kimui-btn-group">
+			  <button class="kimui-btn kimui-btn-primary">首页</button>
+			  <button class="kimui-btn kimui-btn-primary">下一页</button>
+			  <button class="kimui-btn kimui-btn-primary">上一页</button>
+			  <button class="kimui-btn kimui-btn-primary">尾页</button>
+		  </div>
+	 </div>
+
+	 <!-- 按钮尺寸 -->
+	 <div style="width:80%;margin:60px auto;text-align:center;">
+		  <h3>按钮尺寸</h3><br/>
+		  <button class="kimui-btn kimui-btn-large">大型按钮</button>
+		  <button class="kimui-btn">正常按钮</button>
+		  <button class="kimui-btn kimui-btn-small">小型按钮</button>
+		  <button class="kimui-btn kimui-btn-mini">超小按钮</button>
+	 </div>
+
+	 <!-- 引入工具包 -->
+	 <script type="text/javascript" src="../util/jquery-3.0.0.min.js"></script>	
+	 <script>
+		
+	 </script>
+ </body>
+</html>
